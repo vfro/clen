@@ -1,0 +1,2 @@
+To install Clipboard Enhanced unpack Sources\clen folder into AutoHotKey installation
+folder\clen. Then merge Sources\AutoHotkey.ini with content of original AutoHotkey.ini.

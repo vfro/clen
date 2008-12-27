@@ -1,0 +1,25 @@
+Clipboard Enhanced (clen) is a script for AutoHotkey tool.
+AutoHotkey can be downloaded from http://www.autohotkey.com
+
+Main  feature  of  clen  is providing multiple exchange clipboards in a different ways.
+First  of  all clen provides ten static clipboards. One can copy into one of the static
+keyboards by pressing Left Window key + one of the numeric keys (from 1 to 0). To paste
+from  one of the static clipboards combination of Right Window key + one of the numeric
+keys  should be used. Pressing just Right Window key will cause AutoHotkey to display a
+tray tip message with content of all static clipboards.
+ 
+Also clen provides dynamic clipboard. Dynamic clipboard can be used as a queue or stack
+of  values. By default pressing of Left Window key + Insert cause selected object to be
+added  to the beginning of the queue. Pressing Right Window key + Insert will cause one
+value  (if  any  exist)  to  be  pasted from the beginning of the queue. Pressing Right
+Window key + Delete will cause one value to be passed from the end of the queue.
+
+Pressing  just Left Window key will cause AutoHotkey to display a tray tip message with
+content of dynamic clipboard queue.
+
+One  should  note  that  unlike  static clipboards values from dynamic clipboard will be
+removed  from  the  queue automatically after pasting. If dynamic clipboard contain many
+values  pressing  of Right Window key + Insert in series will cause pasting those values
+from dynamic clipboard one by one.
+
+Of course clen is a subject of change. All your proposals are welcome.
