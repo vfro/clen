@@ -15,4 +15,4 @@
 
 
 Menu, Tray, Icon, clen.ico
-Menu, Tray, Tip, Clipboard Enhanced v0.6.1`n(C) Volodymyr Frolov
+Menu, Tray, Tip, Clipboard Enhanced v0.6.1`n© 2008-2009 Volodymyr Frolov

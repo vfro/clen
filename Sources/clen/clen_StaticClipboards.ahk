@@ -106,11 +106,11 @@ clen_private_PrintStatic()
   return
 }
 
-RCtrl & PrintScreen::
+>^PrintScreen::
   clen_private_PrintStaticContent()
   return
 
-RShift & F10::
+>+F10::
   clen_private_StaticInitialize()
 
   if (clen_public_ModeRestoreClipboard)
@@ -126,7 +126,7 @@ RShift & F10::
   return
 
 
-RShift & F11::
+>+F11::
   clen_private_DynamicInitialize()
   clen_private_StaticInitialize()
 
@@ -142,102 +142,102 @@ RShift & F11::
   }
   return
 
-RCtrl & 1::
+>^1::
   clen_StaticCopy(1)
   clen_private_PrintStatic()
   return
 
-RShift & 1::
+>^>+1::
   clen_StaticPaste(1)
   clen_private_PrintStatic()
   return
 
-RCtrl & 2::
+>^2::
   clen_StaticCopy(2)
   clen_private_PrintStatic()
   return
 
-RShift & 2::
+>^>+2::
   clen_StaticPaste(2)
   clen_private_PrintStatic()
   return
 
-RCtrl & 3::
+>^3::
   clen_StaticCopy(3)
   clen_private_PrintStatic()
   return
 
-RShift & 3::
+>^>+3::
   clen_StaticPaste(3)
   clen_private_PrintStatic()
   return
 
-RCtrl & 4::
+>^4::
   clen_StaticCopy(4)
   clen_private_PrintStatic()
   return
 
-RShift & 4::
+>^>+4::
   clen_StaticPaste(4)
   clen_private_PrintStatic()
   return
 
-RCtrl & 5::
+>^5::
   clen_StaticCopy(5)
   clen_private_PrintStatic()
   return
 
-RShift & 5::
+>^>+5::
   clen_StaticPaste(5)
   clen_private_PrintStatic()
   return
 
-RCtrl & 6::
+>^6::
   clen_StaticCopy(6)
   clen_private_PrintStatic()
   return
 
-RShift & 6::
+>^>+6::
   clen_StaticPaste(6)
   clen_private_PrintStatic()
   return
 
-RCtrl & 7::
+>^7::
   clen_StaticCopy(7)
   clen_private_PrintStatic()
   return
 
-RShift & 7::
+>^>+7::
   clen_StaticPaste(7)
   clen_private_PrintStatic()
   return
 
-RCtrl & 8::
+>^8::
   clen_StaticCopy(8)
   clen_private_PrintStatic()
   return
 
-RShift & 8::
+>^>+8::
   clen_StaticPaste(8)
   clen_private_PrintStatic()
   return
 
-RCtrl & 9::
+>^9::
   clen_StaticCopy(9)
   clen_private_PrintStatic()
   return
 
-RShift & 9::
+>^>+9::
   clen_StaticPaste(9)
   clen_private_PrintStatic()
   return
 
-RCtrl & 0::
+>^0::
   clen_StaticCopy(0)
   clen_private_PrintStatic()
   return
 
-RShift & 0::
+>^>+0::
   clen_StaticPaste(0)
   clen_private_PrintStatic()
   return

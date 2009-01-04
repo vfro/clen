@@ -133,7 +133,7 @@ clen_private_DynamicPrintAll()
   TrayTip, clen : Dynamic %Type%, %Content%, 10, 1
 }
 
-RShift & F12::
+>+F12::
   clen_private_DynamicInitialize()
   clen_private_StaticInitialize()
 
@@ -149,18 +149,18 @@ RShift & F12::
   }
   return
 
-RCtrl & Insert::
+>^Insert::
   clen_private_DynamicCopy()
   return
 
-RShift & Insert::
+>+Insert::
   clen_private_DynamicPaste(false)
   return
 
-RShift & Delete::
+>+Delete::
   clen_private_DynamicPaste(true)
   return
 
-RShift & PrintScreen::
+>+PrintScreen::
   clen_private_DynamicPrintAll()
   return
