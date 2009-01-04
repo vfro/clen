@@ -161,6 +161,6 @@ RShift & Delete::
   clen_private_DynamicPaste(true)
   return
 
-RCtrl & PrintScreen::
+RShift & PrintScreen::
   clen_private_DynamicPrintAll()
   return

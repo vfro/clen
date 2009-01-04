@@ -106,7 +106,7 @@ clen_private_PrintStatic()
   return
 }
 
-RWin::
+RCtrl & PrintScreen::
   clen_private_PrintStaticContent()
   return
 
@@ -116,12 +116,12 @@ RShift & F10::
   if (clen_public_ModeRestoreClipboard)
   {
      clen_public_ModeRestoreClipboard := 0
-     TrayTip, clen :, Copy to regular clipboard is turned ON, 10, 1
+     TrayTip, clen : Static & Dynamic, Copy to regular clipboard is turned ON, 10, 1
   }
   else
   {
      clen_public_ModeRestoreClipboard := 1
-     TrayTip, clen :, Copy to regular clipboard is turned OFF, 10, 1
+     TrayTip, clen : Static & Dynamic, Copy to regular clipboard is turned OFF, 10, 1
   }
   return
 
@@ -133,12 +133,12 @@ RShift & F11::
   if (clen_private_Print)
   {
      clen_private_Print = 0
-     TrayTip, clen :, Show keyboard content is turned OFF, 10, 1
+     TrayTip, clen : Static & Dynamic, Show keyboard content is turned OFF, 10, 1
   }
   else
   {
      clen_private_Print = 1
-     TrayTip, clen :, Show keyboard content is turned ON, 10, 1
+     TrayTip, clen : Static & Dynamic, Show keyboard content is turned ON, 10, 1
   }
   return
 
