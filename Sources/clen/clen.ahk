@@ -14,6 +14,6 @@
 ; limitations under the License.
 
 
-#include clen/clen_CopyPaste.ini
-#include clen/clen_StaticClipboards.ini
-#include clen/clen_DynamicClipboards.ini
+#include clen/clen_CopyPaste.ahk
+#include clen/clen_StaticClipboards.ahk
+#include clen/clen_DynamicClipboards.ahk

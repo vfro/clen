@@ -1,5 +1,4 @@
-Clipboard Enhanced (clen) is a script for AutoHotkey tool.
-AutoHotkey can be downloaded from http://www.autohotkey.com
+Clipboard Enhanced (clen) is a script for [http://www.autohotkey.com/ AutoHotkey] tool.
 
 Main  feature  of  clen  is providing multiple exchange clipboards in a different ways.
 First  of  all clen provides ten static clipboards. One can copy into one of the static
