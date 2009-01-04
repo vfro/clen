@@ -15,3 +15,4 @@
 
 
 Menu, Tray, Icon, clen.ico
+Menu, Tray, Tip, Clipboard Enhanced v0.6.1
