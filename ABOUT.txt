@@ -1,24 +1,29 @@
-Clipboard Enhanced (clen) is a script for [http://www.autohotkey.com/ AutoHotkey] tool.
+Clipboard Enhanced (clen) is a script for [http://www.autohotkey.com/ AutoHotkey] tool. It is available as both standalone application and source scripts which can be used together with any other AutoHotkey scripts.
 
-Main  feature  of  clen  is providing multiple exchange clipboards in a different ways.
-First  of  all clen provides ten static clipboards. One can copy into one of the static
-keyboards by pressing Left Window key + one of the numeric keys (from 1 to 0). To paste
-from  one of the static clipboards combination of Right Window key + one of the numeric
-keys  should be used. Pressing just Right Window key will cause AutoHotkey to display a
-tray tip message with content of all static clipboards.
- 
-Also clen provides dynamic clipboard. Dynamic clipboard can be used as a queue or stack
-of  values. By default pressing of Left Window key + Insert cause selected object to be
-added  to the beginning of the queue. Pressing Right Window key + Insert will cause one
-value  (if  any  exist)  to  be  pasted from the beginning of the queue. Pressing Right
-Window key + Delete will cause one value to be passed from the end of the queue.
+Main feature of clen is providing multiple exchange clipboards in a different ways.
 
-Pressing  just Left Window key will cause AutoHotkey to display a tray tip message with
-content of dynamic clipboard queue.
+==Static Clipboards==
+User can copy and paste into ten static clipboards in the similar way to regular clipboard.
 
-One  should  note  that  unlike  static clipboards values from dynamic clipboard will be
-removed  from  the  queue automatically after pasting. If dynamic clipboard contain many
-values  pressing  of Right Window key + Insert in series will cause pasting those values
-from dynamic clipboard one by one.
+Shortcuts for static clipboards are the following:
+ * *Right Ctrl* + Numbers *from 1 to 0* copies to one of static clipboards.
+ * *Right Ctrl* + *Right Shift* + Numbers *from 1 to 0* pastes from one of static clipboards.
+ * *Right Ctrl* + *Print Screen* displays all content of the static clipboards in tray tip.
+
+==Dynamic Clipboard==
+Also clen provides dynamic clipboard. Dynamic clipboard behaves in a manner of queue or stack. Unlike static clipboards values from dynamic clipboard will be removed from the queue after pasting one by one.
+
+Shortcuts for static clipboards are the following:
+ * *Right Ctrl* + *Insert* copies content onto top of the queue.
+ * *Right Shift* + *Insert* pastes content from end of the queue.
+ * *Right Shift* + *Delete* pastes content from top of the queue.
+ * *Right Shift* + *Print Screen* will display content of the dynamic clipboard in tray tip.
+
+==Options==
+The following options can be used 
+
+ * *Right Shift* + *F10* : copy value to regular clipboard after coping or pasting it from or to clen keyboards. By default this option is turned off.
+ * *Right Shift* + *F11* : show clipboard content in a tray tip after coping or pasting it. By default this option is turned on.
+ * *Right Shift* + *F12* : switch dynamic clipboard between stack and queue models. In queue model *Right Shift* + *Insert* hotkey takes first copied value but in stack model it takes last copied one.
 
 Of course clen is a subject of change. All your proposals are welcome.
