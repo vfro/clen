@@ -26,4 +26,10 @@ The following options can be used
  * *Right Shift* + *F11* : show clipboard content in a tray tip after coping or pasting it. By default this option is turned on.
  * *Right Shift* + *F12* : switch dynamic clipboard between stack and queue models. In queue model *Right Shift* + *Insert* hotkey takes first copied value but in stack model it takes last copied one.
 
+==Save and Load==
+ * *Right Ctrl* + *F10* : reset all clipboards and options to default values.
+ * *Right Ctrl* + *F11* : load from registry state of all clipboards and options.
+ * *Right Ctrl * + *F12* : save to registry state of all clipboards and options.
+
+==Your proposals are very welcome==
 Of course clen is a subject of change. All your proposals are welcome.
