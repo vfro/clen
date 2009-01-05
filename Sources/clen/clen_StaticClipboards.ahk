@@ -125,7 +125,6 @@ clen_private_PrintStatic()
   }
   return
 
-
 >+F11::
   clen_private_DynamicInitialize()
   clen_private_StaticInitialize()

@@ -1,7 +1,3 @@
-;
-; Clipboard Enhanced v0.6.1
-;
-
 ; Copyright 2008-2009 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
@@ -15,4 +11,4 @@
 
 
 Menu, Tray, Icon, clen.ico
-Menu, Tray, Tip, Clipboard Enhanced v0.6.1`n© 2008-2009 Volodymyr Frolov
+Menu, Tray, Tip, Clipboard Enhanced v0.6.1 © 2008-2009 Volodymyr Frolov`nLicensed under the Apache License`, Version 2.0

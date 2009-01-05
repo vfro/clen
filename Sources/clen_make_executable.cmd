@@ -15,5 +15,6 @@ cat clen\clen_Icon.ahk > clen.ahk
 cat clen\clen_CopyPaste.ahk >> clen.ahk
 cat clen\clen_DynamicClipboards.ahk >> clen.ahk
 cat clen\clen_StaticClipboards.ahk >> clen.ahk
+cat clen\clen_SaveLoad.ahk >> clen.ahk
 
 Ahk2Exe.exe /in clen.ahk /icon clen.ico /out clipboard_enhanced.exe /NoDecompile
