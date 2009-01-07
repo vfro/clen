@@ -10,4 +10,4 @@
 ; limitations under the License.
 
 
-Menu, Tray, Tip, Clipboard Enhanced v0.7 © 2008-2009 Volodymyr Frolov`nLicensed under the Apache License`, Version 2.0
+Menu, Tray, Tip, Clipboard Enhanced v0.7.1 © 2008-2009 Volodymyr Frolov`nLicensed under the Apache License`, Version 2.0

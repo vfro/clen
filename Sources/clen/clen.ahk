@@ -1,5 +1,5 @@
 ;
-; Clipboard Enhanced v0.7
+; Clipboard Enhanced v0.7.1
 ;
 
 ; Copyright 2008-2009 Volodymyr Frolov
