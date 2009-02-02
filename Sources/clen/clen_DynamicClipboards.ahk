@@ -67,6 +67,7 @@ clen_private_DynamicPaste(ReverseMode)
   {
      if (clen_private_DynamicIndexBegin >= clen_private_DynamicIndexEnd)
      {
+        clen_private_Paste()
         return
      }
      Clipboard := clen_private_DynamicClip%clen_private_DynamicIndexBegin%
@@ -77,6 +78,7 @@ clen_private_DynamicPaste(ReverseMode)
   {
      if (clen_private_DynamicIndexBegin >= clen_private_DynamicIndexEnd)
      {
+        clen_private_Paste()
         return
      }
      
