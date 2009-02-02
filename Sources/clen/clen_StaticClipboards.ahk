@@ -142,101 +142,29 @@ clen_private_PrintStatic()
   return
 
 >^1::
-  clen_StaticCopy(1)
+>^2::
+>^3::
+>^4::
+>^5::
+>^6::
+>^7::
+>^8::
+>^9::
+>^0::
+  clen_StaticCopy(SubStr(A_ThisHotKey, 3, 1))
   clen_private_PrintStatic()
   return
 
 >^>+1::
-  clen_StaticPaste(1)
-  clen_private_PrintStatic()
-  return
-
->^2::
-  clen_StaticCopy(2)
-  clen_private_PrintStatic()
-  return
-
 >^>+2::
-  clen_StaticPaste(2)
-  clen_private_PrintStatic()
-  return
-
->^3::
-  clen_StaticCopy(3)
-  clen_private_PrintStatic()
-  return
-
 >^>+3::
-  clen_StaticPaste(3)
-  clen_private_PrintStatic()
-  return
-
->^4::
-  clen_StaticCopy(4)
-  clen_private_PrintStatic()
-  return
-
 >^>+4::
-  clen_StaticPaste(4)
-  clen_private_PrintStatic()
-  return
-
->^5::
-  clen_StaticCopy(5)
-  clen_private_PrintStatic()
-  return
-
 >^>+5::
-  clen_StaticPaste(5)
-  clen_private_PrintStatic()
-  return
-
->^6::
-  clen_StaticCopy(6)
-  clen_private_PrintStatic()
-  return
-
 >^>+6::
-  clen_StaticPaste(6)
-  clen_private_PrintStatic()
-  return
-
->^7::
-  clen_StaticCopy(7)
-  clen_private_PrintStatic()
-  return
-
 >^>+7::
-  clen_StaticPaste(7)
-  clen_private_PrintStatic()
-  return
-
->^8::
-  clen_StaticCopy(8)
-  clen_private_PrintStatic()
-  return
-
 >^>+8::
-  clen_StaticPaste(8)
-  clen_private_PrintStatic()
-  return
-
->^9::
-  clen_StaticCopy(9)
-  clen_private_PrintStatic()
-  return
-
 >^>+9::
-  clen_StaticPaste(9)
-  clen_private_PrintStatic()
-  return
-
->^0::
-  clen_StaticCopy(0)
-  clen_private_PrintStatic()
-  return
-
 >^>+0::
-  clen_StaticPaste(0)
+  clen_StaticPaste(SubStr(A_ThisHotKey, 5, 1))
   clen_private_PrintStatic()
   return
