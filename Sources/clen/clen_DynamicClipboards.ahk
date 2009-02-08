@@ -10,28 +10,9 @@
 ; limitations under the License.
 
 
-clen_private_DynamicInitialize()
-{
-  local Index
-
-  if (!clen_private_IsDynamicInitialized)
-  {
-     clen_private_IsDynamicInitialized = 1
-
-     clen_private_DynamicIsStack = 0
-
-     clen_private_DynamicIndexBegin = 1
-     clen_private_DynamicIndexEnd = 1
-  }
-  return
-}
-
 clen_private_DynamicCopy()
 {
   local ClipboardOld := ClipboardAll
-
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
 
   clen_private_Copy()
 
@@ -59,9 +40,6 @@ clen_private_DynamicPaste(ReverseMode)
   {
      StackMode := !StackMode
   }
-
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
 
   if (!StackMode)
   {
@@ -110,9 +88,6 @@ clen_private_DynamicPrintAll()
   local Type := ""
   local ClipboardOld := ClipboardAll
 
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
-
   Loop %Difference%
   {
      Index := clen_private_DynamicIndexBegin + A_Index - 1
@@ -136,9 +111,6 @@ clen_private_DynamicPrintAll()
 }
 
 >+F12::
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
-
   if (clen_private_DynamicIsStack)
   {
      clen_private_DynamicIsStack = 0

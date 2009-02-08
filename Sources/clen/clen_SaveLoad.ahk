@@ -31,9 +31,6 @@ clen_LoadSettings()
 {
   local Index
 
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
-
   Loop 9
   {
      RegRead, clen_private_ClipBoard%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, %A_Index%

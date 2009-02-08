@@ -10,35 +10,9 @@
 ; limitations under the License.
 
 
-clen_private_StaticInitialize()
-{
-   local Index
-
-   if (!clen_private_IsStaticInitialized)
-   {
-      clen_private_Print = 1
-
-      clen_private_IsStaticInitialized = 1
-      clen_public_ModeRestoreClipboard = 1
-
-      clen_private_ClipBoard0 := ""
-      clen_private_ClipBoard1 := ""
-      clen_private_ClipBoard2 := ""
-      clen_private_ClipBoard3 := ""
-      clen_private_ClipBoard4 := ""
-      clen_private_ClipBoard5 := ""
-      clen_private_ClipBoard6 := ""
-      clen_private_ClipBoard7 := ""
-      clen_private_ClipBoard8 := ""
-      clen_private_ClipBoard9 := ""
-   }
-   return
-}
-
 clen_StaticCopy(ClipboardNumber)
 {
   local ClipboardOld := ClipboardAll
-  clen_private_StaticInitialize()
 
   clen_private_Copy()
   clen_private_ClipBoard%ClipboardNumber% := ClipboardAll
@@ -52,7 +26,6 @@ clen_StaticCopy(ClipboardNumber)
 clen_StaticPaste(ClipboardNumber)
 {
   local ClipboardOld := ClipboardAll
-  clen_private_StaticInitialize()
 
   Clipboard := clen_private_ClipBoard%ClipboardNumber%
   clen_private_Paste()
@@ -84,7 +57,6 @@ clen_private_GetClipPrintableData(ClipIndex)
 clen_private_PrintStaticContent()
 {
   local clipAll =
-  clen_private_StaticInitialize()
 
   Loop 9
   {
@@ -98,7 +70,6 @@ clen_private_PrintStaticContent()
 clen_private_PrintStatic()
 {
   local Index
-  clen_private_StaticInitialize()
   if(clen_private_Print)
   {
      clen_private_PrintStaticContent()
@@ -111,8 +82,6 @@ clen_private_PrintStatic()
   return
 
 >+F10::
-  clen_private_StaticInitialize()
-
   if (clen_public_ModeRestoreClipboard)
   {
      clen_public_ModeRestoreClipboard := 0
@@ -126,9 +95,6 @@ clen_private_PrintStatic()
   return
 
 >+F11::
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
-
   if (clen_private_Print)
   {
      clen_private_Print = 0

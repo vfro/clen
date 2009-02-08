@@ -11,7 +11,8 @@ rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 rem See the License for the specific language governing permissions and
 rem limitations under the License.
 
-cat clen\clen_Representation.ahk > clen.ahk
+cat clen\clen_Initialize.ahk > clen.ahk
+cat clen\clen_Representation.ahk >> clen.ahk
 cat clen\clen_CopyPaste.ahk >> clen.ahk
 cat clen\clen_DynamicClipboards.ahk >> clen.ahk
 cat clen\clen_StaticClipboards.ahk >> clen.ahk
