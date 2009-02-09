@@ -125,18 +125,8 @@ clen_private_DynamicPrintAll()
   clen_private_DynamicPrintAll()
   return
 
-^Numpad0::
 ^NumpadIns::
   clen_private_DynamicCopy()
-  return
-
-NumpadIns::
-NumpadDel::
-  clen_private_DynamicPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
-  clen_private_DynamicPrintAll()
-  clen_private_InstallPressed("On")
-  KeyWait, Shift
-  clen_private_InstallPressed("Off")
   return
 
 +NumpadIns::

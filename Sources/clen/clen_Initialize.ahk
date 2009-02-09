@@ -18,7 +18,6 @@ clen_private_InitializeNumLock()
 
   GetKeyState, NumLockState, NumLock, T
   clen_private_NumLockState := NumLockState
-  clen_private_NumLockHotkeysKeys()
 }
 
 clen_private_DynamicInitialize()

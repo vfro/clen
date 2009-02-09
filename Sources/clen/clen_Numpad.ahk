@@ -71,39 +71,3 @@ clen_private_RecognizeNumpadHotkey(NumpadHotkey)
   }
   return
 }
-
-clen_private_InstallPressed(Mode)
-{
-  Hotkey, SC04F, Pressed1, %Mode%
-  Hotkey, SC050, Pressed2, %Mode%
-  Hotkey, SC051, Pressed3, %Mode%
-  Hotkey, SC04B, Pressed4, %Mode%
-  Hotkey, SC04C, Pressed5, %Mode%
-  Hotkey, SC04D, Pressed6, %Mode%
-  Hotkey, SC047, Pressed7, %Mode%
-  Hotkey, SC048, Pressed8, %Mode%
-  Hotkey, SC049, Pressed9, %Mode%
-  Hotkey, SC052, PressedIns, %Mode%
-  Hotkey, SC053, PressedDel, %Mode%
-}
-
-Pressed1:
-Pressed2:
-Pressed3:
-Pressed4:
-Pressed5:
-Pressed6:
-Pressed7:
-Pressed8:
-Pressed9:
-  clen_StaticPaste(SubStr(A_ThisLabel, 8, 1))
-  clen_private_PrintStatic()
-  return
-
-PressedIns:
-  clen_private_DynamicPaste(10)
-  return
-
-PressedDel:
-  clen_private_DynamicPaste(11)
-  return
