@@ -12,6 +12,8 @@ rem See the License for the specific language governing permissions and
 rem limitations under the License.
 
 cat clen\clen_Initialize.ahk > clen.ahk
+cat clen\clen_NumLock.ahk >> clen.ahk
+cat clen\clen_Numpad.ahk >> clen.ahk
 cat clen\clen_Representation.ahk >> clen.ahk
 cat clen\clen_CopyPaste.ahk >> clen.ahk
 cat clen\clen_DynamicClipboards.ahk >> clen.ahk

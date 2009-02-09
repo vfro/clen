@@ -36,7 +36,7 @@ clen_private_DynamicPaste(ReverseMode)
   local ClipboardOld := ClipboardAll
   local StackIndex := clen_private_DynamicIndexEnd - 1
   local StackMode = clen_private_DynamicIsStack
-  if (ReverseMode)
+  if (ReverseMode == 10)
   {
      StackMode := !StackMode
   }
@@ -45,7 +45,6 @@ clen_private_DynamicPaste(ReverseMode)
   {
      if (clen_private_DynamicIndexBegin >= clen_private_DynamicIndexEnd)
      {
-        clen_private_Paste()
         return
      }
      Clipboard := clen_private_DynamicClip%clen_private_DynamicIndexBegin%
@@ -56,7 +55,6 @@ clen_private_DynamicPaste(ReverseMode)
   {
      if (clen_private_DynamicIndexBegin >= clen_private_DynamicIndexEnd)
      {
-        clen_private_Paste()
         return
      }
      
@@ -123,18 +121,25 @@ clen_private_DynamicPrintAll()
   }
   return
 
->^Insert::
+>+PrintScreen::
+  clen_private_DynamicPrintAll()
+  return
+
+^Numpad0::
+^NumpadIns::
   clen_private_DynamicCopy()
   return
 
->+Insert::
-  clen_private_DynamicPaste(false)
-  return
-
->+Delete::
-  clen_private_DynamicPaste(true)
-  return
-
->+PrintScreen::
+NumpadIns::
+NumpadDel::
+  clen_private_DynamicPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
   clen_private_DynamicPrintAll()
+  clen_private_InstallPressed("On")
+  KeyWait, Shift
+  clen_private_InstallPressed("Off")
+  return
+
++NumpadIns::
++NumpadDel::
+  clen_private_DynamicPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
   return

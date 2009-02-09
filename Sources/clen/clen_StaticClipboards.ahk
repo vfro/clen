@@ -107,30 +107,62 @@ clen_private_PrintStatic()
   }
   return
 
->^1::
->^2::
->^3::
->^4::
->^5::
->^6::
->^7::
->^8::
->^9::
->^0::
-  clen_StaticCopy(SubStr(A_ThisHotKey, 3, 1))
+;
+; Copy
+;
+
+^Numpad1::
+^NumpadEnd::
+^Numpad2::
+^NumpadDown::
+^Numpad3::
+^NumpadPgDn::
+^Numpad4::
+^NumpadLeft::
+^Numpad5::
+^NumpadClear::
+^Numpad6::
+^NumpadRight::
+^Numpad7::
+^NumpadHome::
+^Numpad8::
+^NumpadUp::
+^Numpad9::
+^NumpadPgUp::
+  clen_StaticCopy(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
   clen_private_PrintStatic()
   return
 
->^>+1::
->^>+2::
->^>+3::
->^>+4::
->^>+5::
->^>+6::
->^>+7::
->^>+8::
->^>+9::
->^>+0::
-  clen_StaticPaste(SubStr(A_ThisHotKey, 5, 1))
+;
+; Paste
+;
+
+NumpadEnd::
+NumpadDown::
+NumpadPgDn::
+NumpadLeft::
+NumpadClear::
+NumpadRight::
+NumpadHome::
+NumpadUp::
+NumpadPgUp::
+  clen_StaticPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
+  clen_private_PrintStatic()
+  clen_private_InstallPressed("On")
+  KeyWait, Shift
+  clen_private_InstallPressed("Off")
+  return
+
++NumpadEnd::
++NumpadDown::
++NumpadPgDn::
++NumpadLeft::
++NumpadClear::
++NumpadRight::
++NumpadHome::
++NumpadUp::
++NumpadPgUp::
+  clen_StaticPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
   clen_private_PrintStatic()
   return
+

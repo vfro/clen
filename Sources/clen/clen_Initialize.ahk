@@ -12,6 +12,15 @@
 
 clen_private_Initialize()
 
+clen_private_InitializeNumLock()
+{
+  local NumLockState
+
+  GetKeyState, NumLockState, NumLock, T
+  clen_private_NumLockState := NumLockState
+  clen_private_NumLockHotkeysKeys()
+}
+
 clen_private_DynamicInitialize()
 {
   local Index
@@ -57,5 +66,6 @@ clen_private_Initialize()
 {
   clen_private_DynamicInitialize()
   clen_private_StaticInitialize()
+  clen_private_InitializeNumLock()
   return
 }
