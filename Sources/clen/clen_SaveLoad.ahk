@@ -92,15 +92,14 @@ clen_SaveSettings()
   return
 }
 
->^F10::
+!NumpadDel::
   Reload
   return
 
->^F11::
+!NumpadIns::
   clen_LoadSettings()
   return
 
->^F12::
+!NumpadEnter::
   clen_SaveSettings()
   return
-  

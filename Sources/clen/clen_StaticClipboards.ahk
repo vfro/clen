@@ -77,11 +77,11 @@ clen_private_PrintStatic()
   return
 }
 
->^PrintScreen::
+!NumpadDiv::
   clen_private_PrintStaticContent()
   return
 
->+F10::
+!NumpadPgDn::
   if (clen_public_ModeRestoreClipboard)
   {
      clen_public_ModeRestoreClipboard := 0
@@ -94,7 +94,7 @@ clen_private_PrintStatic()
   }
   return
 
->+F11::
+!NumpadDown::
   if (clen_private_Print)
   {
      clen_private_Print = 0

@@ -108,7 +108,11 @@ clen_private_DynamicPrintAll()
   TrayTip, clen : Dynamic %Type%, %Content%, 10, 1
 }
 
->+F12::
+!NumpadMult::
+  clen_private_DynamicPrintAll()
+  return
+
+!NumpadEnd::
   if (clen_private_DynamicIsStack)
   {
      clen_private_DynamicIsStack = 0
@@ -119,10 +123,6 @@ clen_private_DynamicPrintAll()
      clen_private_DynamicIsStack = 1
      TrayTip, clen : Dynamic, Clipboard Dynamic model is switched to STACK, 10, 1
   }
-  return
-
->+PrintScreen::
-  clen_private_DynamicPrintAll()
   return
 
 ^NumpadIns::
