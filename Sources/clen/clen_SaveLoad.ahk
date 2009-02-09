@@ -40,6 +40,7 @@ clen_LoadSettings()
   RegRead, clen_private_DynamicIsStack, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack
   RegRead, clen_public_ModeRestoreClipboard, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard
   RegRead, clen_private_Print, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent
+  RegRead, clen_private_CopyPasteInsert, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert
 
   clen_private_DynamicIndexBegin = 1
   RegRead, clen_private_DynamicIndexEnd, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count
@@ -76,6 +77,7 @@ clen_SaveSettings()
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack, %clen_private_DynamicIsStack%
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard, %clen_public_ModeRestoreClipboard%
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent, %clen_private_Print%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert, %clen_private_CopyPasteInsert%
 
   RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count, %Difference%
   Loop %Difference%

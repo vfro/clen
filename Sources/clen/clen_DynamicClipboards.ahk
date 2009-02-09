@@ -17,6 +17,11 @@ clen_private_DynamicCopy()
   clen_private_Copy()
 
   clen_private_DynamicClip%clen_private_DynamicIndexEnd% := ClipboardAll
+  if (StrLen(clen_private_DynamicClip%clen_private_DynamicIndexEnd%) == 0)
+  {
+    return
+  }
+
   clen_private_DynamicIndexEnd++
 
   if(clen_public_ModeRestoreClipboard)

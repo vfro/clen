@@ -20,6 +20,19 @@ clen_private_InitializeNumLock()
   clen_private_NumLockState := NumLockState
 }
 
+clen_private_InitializeCopyPasteMode()
+{
+  local Index
+
+  if (!clen_private_IsCopyPasteModeInitialized)
+  {
+     clen_private_IsCopyPasteModeInitialized = 1
+
+     clen_private_CopyPasteInsert = true
+  }
+  return
+}
+
 clen_private_DynamicInitialize()
 {
   local Index
@@ -66,5 +79,6 @@ clen_private_Initialize()
   clen_private_DynamicInitialize()
   clen_private_StaticInitialize()
   clen_private_InitializeNumLock()
+  clen_private_InitializeCopyPasteMode()
   return
 }

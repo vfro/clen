@@ -12,14 +12,54 @@
 
 clen_private_Copy()
 {
+  local Index
+
   Clipboard =
-  SendInput {Ctrl Down}{Insert Down}{Insert Up}{Ctrl Up}
+  if (clen_private_CopyPasteInsert)
+  {
+    SendInput {Ctrl Down}{Insert Down}{Insert Up}{Ctrl Up}
+  }
+  else
+  {
+    SendInput ^c
+  }
+
   ClipWait, 0.5, 1
   return
 }
 
 clen_private_Paste()
 {
-  SendInput {Shift Down}{Insert Down}{Insert Up}{Shift Up}
+  local Index
+
+  if (clen_private_CopyPasteInsert)
+  {
+    SendInput {Shift Down}{Insert Down}{Insert Up}{Shift Up}
+  }
+  else
+  {
+    SendInput ^v
+  }
   return
 }
+
+clen_private_ChangeCopyPasteMode()
+{
+  local Index
+
+  if (clen_private_CopyPasteInsert)
+  {
+    clen_private_CopyPasteInsert := false
+    TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+C\Ctrl+V, 10, 1
+  }
+  else
+  {
+    clen_private_CopyPasteInsert := true
+    TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+Insert\Shift+Insert, 10, 1
+  }
+  return
+}
+
+!NumpadSub::
+  clen_private_ChangeCopyPasteMode()
+  return
