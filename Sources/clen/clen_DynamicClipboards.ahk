@@ -41,7 +41,7 @@ clen_private_DynamicPaste(ReverseMode)
   local ClipboardOld := ClipboardAll
   local StackIndex := clen_private_DynamicIndexEnd - 1
   local StackMode = clen_private_DynamicIsStack
-  if (ReverseMode == 10)
+  if (ReverseMode == 11)
   {
      StackMode := !StackMode
   }

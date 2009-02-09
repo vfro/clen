@@ -21,7 +21,7 @@ clen_private_Copy()
   }
   else
   {
-    SendInput ^c
+    SendInput {Ctrl Down}{c Down}{c Up}{Ctrl Up}
   }
 
   ClipWait, 0.5, 1
@@ -38,7 +38,7 @@ clen_private_Paste()
   }
   else
   {
-    SendInput ^v
+    SendInput {Ctrl Down}{v Down}{v Up}{Ctrl Up}
   }
   return
 }
@@ -60,6 +60,6 @@ clen_private_ChangeCopyPasteMode()
   return
 }
 
-!NumpadSub::
+!NumpadLeft::
   clen_private_ChangeCopyPasteMode()
   return
