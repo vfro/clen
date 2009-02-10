@@ -70,7 +70,6 @@ clen_DynamicPaste(ReverseMode)
 
   clen_Paste()
 
-  Sleep, 100
   if(clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld

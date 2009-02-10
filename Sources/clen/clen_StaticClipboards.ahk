@@ -29,7 +29,7 @@ clen_StaticPaste(ClipboardNumber)
 
   Clipboard := clen_ClipBoard%ClipboardNumber%
   clen_Paste()
-  Sleep, 100
+
   if (clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld

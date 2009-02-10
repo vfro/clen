@@ -29,7 +29,6 @@ clen_ToCase(toCase)
   Clipboard := Value
 
   clen_Paste()
-  Sleep, 100
 
   if (clen_ModeRestoreClipboard)
   {

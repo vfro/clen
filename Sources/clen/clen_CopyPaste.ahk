@@ -40,6 +40,8 @@ clen_Paste()
   {
     SendInput {Ctrl Down}{v Down}{v Up}{Ctrl Up}
   }
+
+  Sleep, 100
   return
 }
 
