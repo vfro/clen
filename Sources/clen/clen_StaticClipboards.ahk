@@ -14,9 +14,9 @@ clen_StaticCopy(ClipboardNumber)
 {
   local ClipboardOld := ClipboardAll
 
-  clen_private_Copy()
-  clen_private_ClipBoard%ClipboardNumber% := ClipboardAll
-  if (clen_public_ModeRestoreClipboard)
+  clen_Copy()
+  clen_ClipBoard%ClipboardNumber% := ClipboardAll
+  if (clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld
   }
@@ -27,23 +27,23 @@ clen_StaticPaste(ClipboardNumber)
 {
   local ClipboardOld := ClipboardAll
 
-  Clipboard := clen_private_ClipBoard%ClipboardNumber%
-  clen_private_Paste()
+  Clipboard := clen_ClipBoard%ClipboardNumber%
+  clen_Paste()
   Sleep, 100
-  if (clen_public_ModeRestoreClipboard)
+  if (clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld
   }
   return
 }
 
-clen_private_GetClipPrintableData(ClipIndex)
+clen_GetClipPrintableData(ClipIndex)
 {
   local Result =
   local ClipData =
   local ClipboardOld := ClipboardAll
 
-  Clipboard := clen_private_ClipBoard%ClipIndex%
+  Clipboard := clen_ClipBoard%ClipIndex%
   ClipData := Clipboard
   if ClipData is not space
   {
@@ -54,55 +54,55 @@ clen_private_GetClipPrintableData(ClipIndex)
   return %Result%
 }
 
-clen_private_PrintStaticContent()
+clen_PrintStaticContent()
 {
   local clipAll =
 
   Loop 9
   {
-     clipAll .= clen_private_GetClipPrintableData(A_Index)
+     clipAll .= clen_GetClipPrintableData(A_Index)
   }
-  clipAll .= clen_private_GetClipPrintableData(0)
+  clipAll .= clen_GetClipPrintableData(0)
   TrayTip, clen : Static, %clipAll%, 10, 1
   return
 }
 
-clen_private_PrintStatic()
+clen_PrintStatic()
 {
   local Index
-  if(clen_private_Print)
+  if(clen_Print)
   {
-     clen_private_PrintStaticContent()
+     clen_PrintStaticContent()
   }
   return
 }
 
 !NumpadDiv::
-  clen_private_PrintStaticContent()
+  clen_PrintStaticContent()
   return
 
 !NumpadPgDn::
-  if (clen_public_ModeRestoreClipboard)
+  if (clen_ModeRestoreClipboard)
   {
-     clen_public_ModeRestoreClipboard := 0
+     clen_ModeRestoreClipboard := 0
      TrayTip, clen : Static & Dynamic, Copy to regular clipboard is turned ON, 10, 1
   }
   else
   {
-     clen_public_ModeRestoreClipboard := 1
+     clen_ModeRestoreClipboard := 1
      TrayTip, clen : Static & Dynamic, Copy to regular clipboard is turned OFF, 10, 1
   }
   return
 
 !NumpadDown::
-  if (clen_private_Print)
+  if (clen_Print)
   {
-     clen_private_Print = 0
+     clen_Print = 0
      TrayTip, clen : Static & Dynamic, Show keyboard content is turned OFF, 10, 1
   }
   else
   {
-     clen_private_Print = 1
+     clen_Print = 1
      TrayTip, clen : Static & Dynamic, Show keyboard content is turned ON, 10, 1
   }
   return
@@ -120,8 +120,8 @@ clen_private_PrintStatic()
 ^NumpadHome::
 ^NumpadUp::
 ^NumpadPgUp::
-  clen_StaticCopy(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
-  clen_private_PrintStatic()
+  clen_StaticCopy(clen_RecognizeNumpadHotkey(A_ThisHotkey))
+  clen_PrintStatic()
   return
 
 ;
@@ -137,6 +137,6 @@ clen_private_PrintStatic()
 +NumpadHome::
 +NumpadUp::
 +NumpadPgUp::
-  clen_StaticPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
-  clen_private_PrintStatic()
+  clen_StaticPaste(clen_RecognizeNumpadHotkey(A_ThisHotkey))
+  clen_PrintStatic()
   return

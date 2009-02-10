@@ -10,13 +10,13 @@
 ; limitations under the License.
 
 
-clen_private_SaveClipData(ClipIndex)
+clen_SaveClipData(ClipIndex)
 {
   local Result =
   local ClipData =
   local ClipboardOld := ClipboardAll
 
-  Clipboard := clen_private_ClipBoard%ClipIndex%
+  Clipboard := clen_ClipBoard%ClipIndex%
   ClipData := Clipboard
   if ClipData is not space
   {
@@ -33,22 +33,22 @@ clen_LoadSettings()
 
   Loop 9
   {
-     RegRead, clen_private_ClipBoard%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, %A_Index%
+     RegRead, clen_ClipBoard%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, %A_Index%
   }
-  RegRead, clen_private_ClipBoard0, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, 0
+  RegRead, clen_ClipBoard0, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, 0
 
-  RegRead, clen_private_DynamicIsStack, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack
-  RegRead, clen_public_ModeRestoreClipboard, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard
-  RegRead, clen_private_Print, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent
-  RegRead, clen_private_CopyPasteInsert, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert
+  RegRead, clen_DynamicIsStack, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack
+  RegRead, clen_ModeRestoreClipboard, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard
+  RegRead, clen_Print, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent
+  RegRead, clen_CopyPasteInsert, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert
 
-  clen_private_DynamicIndexBegin = 1
-  RegRead, clen_private_DynamicIndexEnd, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count
-  Loop %clen_private_DynamicIndexEnd%
+  clen_DynamicIndexBegin = 1
+  RegRead, clen_DynamicIndexEnd, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count
+  Loop %clen_DynamicIndexEnd%
   {
-     RegRead, clen_private_DynamicClip%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\dynamic, %A_Index%
+     RegRead, clen_DynamicClip%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\dynamic, %A_Index%
   }
-  clen_private_DynamicIndexEnd += 1
+  clen_DynamicIndexEnd += 1
 
   TrayTip, clen : Static & Dynamic, All clipboards and options were restored, 10, 1
   return
@@ -57,33 +57,33 @@ clen_LoadSettings()
 clen_SaveSettings()
 {
   local Value
-  local Difference := clen_private_DynamicIndexEnd - clen_private_DynamicIndexBegin
+  local Difference := clen_DynamicIndexEnd - clen_DynamicIndexBegin
   local Index = 0
   local ClipboardOld := ClipboardAll
 
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
+  clen_DynamicInitialize()
+  clen_StaticInitialize()
 
   RegDelete, HKEY_CURRENT_USER, Software\clen
 
   Loop 9
   {
-     Value := clen_private_SaveClipData(A_Index)
+     Value := clen_SaveClipData(A_Index)
      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, %A_Index%, %Value%
   }
-  Value := clen_private_SaveClipData(0)
+  Value := clen_SaveClipData(0)
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, 0, %Value%
 
-  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack, %clen_private_DynamicIsStack%
-  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard, %clen_public_ModeRestoreClipboard%
-  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent, %clen_private_Print%
-  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert, %clen_private_CopyPasteInsert%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack, %clen_DynamicIsStack%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard, %clen_ModeRestoreClipboard%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent, %clen_Print%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert, %clen_CopyPasteInsert%
 
   RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count, %Difference%
   Loop %Difference%
   {
-     Index := clen_private_DynamicIndexBegin + A_Index - 1
-     Clipboard := clen_private_DynamicClip%Index%
+     Index := clen_DynamicIndexBegin + A_Index - 1
+     Clipboard := clen_DynamicClip%Index%
      Value := Clipboard
      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\dynamic, %A_Index%, %Value%
   }

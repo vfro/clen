@@ -10,12 +10,12 @@
 ; limitations under the License.
 
 
-clen_private_Copy()
+clen_Copy()
 {
   local Index
 
   Clipboard =
-  if (clen_private_CopyPasteInsert)
+  if (clen_CopyPasteInsert)
   {
     SendInput {Ctrl Down}{Insert Down}{Insert Up}{Ctrl Up}
   }
@@ -28,11 +28,11 @@ clen_private_Copy()
   return
 }
 
-clen_private_Paste()
+clen_Paste()
 {
   local Index
 
-  if (clen_private_CopyPasteInsert)
+  if (clen_CopyPasteInsert)
   {
     SendInput {Shift Down}{Insert Down}{Insert Up}{Shift Up}
   }
@@ -43,23 +43,23 @@ clen_private_Paste()
   return
 }
 
-clen_private_ChangeCopyPasteMode()
+clen_ChangeCopyPasteMode()
 {
   local Index
 
-  if (clen_private_CopyPasteInsert)
+  if (clen_CopyPasteInsert)
   {
-    clen_private_CopyPasteInsert := false
+    clen_CopyPasteInsert := false
     TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+C\Ctrl+V, 10, 1
   }
   else
   {
-    clen_private_CopyPasteInsert := true
+    clen_CopyPasteInsert := true
     TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+Insert\Shift+Insert, 10, 1
   }
   return
 }
 
 !NumpadLeft::
-  clen_private_ChangeCopyPasteMode()
+  clen_ChangeCopyPasteMode()
   return

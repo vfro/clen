@@ -10,7 +10,7 @@
 ; limitations under the License.
 
 
-clen_private_RecognizeNumpadHotkey(NumpadHotkey)
+clen_RecognizeNumpadHotkey(NumpadHotkey)
 {
   local Index
   Loop 10

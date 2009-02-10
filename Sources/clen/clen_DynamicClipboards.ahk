@@ -10,37 +10,37 @@
 ; limitations under the License.
 
 
-clen_private_DynamicCopy()
+clen_DynamicCopy()
 {
   local ClipboardOld := ClipboardAll
 
-  clen_private_Copy()
+  clen_Copy()
 
-  clen_private_DynamicClip%clen_private_DynamicIndexEnd% := ClipboardAll
-  if (StrLen(clen_private_DynamicClip%clen_private_DynamicIndexEnd%) == 0)
+  clen_DynamicClip%clen_DynamicIndexEnd% := ClipboardAll
+  if (StrLen(clen_DynamicClip%clen_DynamicIndexEnd%) == 0)
   {
     return
   }
 
-  clen_private_DynamicIndexEnd++
+  clen_DynamicIndexEnd++
 
-  if(clen_public_ModeRestoreClipboard)
+  if(clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld
   }
 
-  if(clen_private_Print)
+  if(clen_Print)
   {
-     clen_private_DynamicPrintAll()
+     clen_DynamicPrintAll()
   }
   return
 }
 
-clen_private_DynamicPaste(ReverseMode)
+clen_DynamicPaste(ReverseMode)
 {
   local ClipboardOld := ClipboardAll
-  local StackIndex := clen_private_DynamicIndexEnd - 1
-  local StackMode = clen_private_DynamicIsStack
+  local StackIndex := clen_DynamicIndexEnd - 1
+  local StackMode = clen_DynamicIsStack
   if (ReverseMode == 11)
   {
      StackMode := !StackMode
@@ -48,44 +48,44 @@ clen_private_DynamicPaste(ReverseMode)
 
   if (!StackMode)
   {
-     if (clen_private_DynamicIndexBegin >= clen_private_DynamicIndexEnd)
+     if (clen_DynamicIndexBegin >= clen_DynamicIndexEnd)
      {
         return
      }
-     Clipboard := clen_private_DynamicClip%clen_private_DynamicIndexBegin%
-     clen_private_DynamicClip%clen_private_DynamicIndexBegin% := ""
-     clen_private_DynamicIndexBegin++
+     Clipboard := clen_DynamicClip%clen_DynamicIndexBegin%
+     clen_DynamicClip%clen_DynamicIndexBegin% := ""
+     clen_DynamicIndexBegin++
   }
   else
   {
-     if (clen_private_DynamicIndexBegin >= clen_private_DynamicIndexEnd)
+     if (clen_DynamicIndexBegin >= clen_DynamicIndexEnd)
      {
         return
      }
      
-     Clipboard := clen_private_DynamicClip%StackIndex%
-     clen_private_DynamicClip%StackIndex% := ""
-     clen_private_DynamicIndexEnd--
+     Clipboard := clen_DynamicClip%StackIndex%
+     clen_DynamicClip%StackIndex% := ""
+     clen_DynamicIndexEnd--
   }
 
-  clen_private_Paste()
+  clen_Paste()
 
   Sleep, 100
-  if(clen_public_ModeRestoreClipboard)
+  if(clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld
   }
 
-  if(clen_private_Print)
+  if(clen_Print)
   {
-     clen_private_DynamicPrintAll()
+     clen_DynamicPrintAll()
   }
   return
 }
 
-clen_private_DynamicPrintAll()
+clen_DynamicPrintAll()
 {
-  local Difference := clen_private_DynamicIndexEnd - clen_private_DynamicIndexBegin
+  local Difference := clen_DynamicIndexEnd - clen_DynamicIndexBegin
   local Index = 0
   local Content := ""
   local Type := ""
@@ -93,14 +93,14 @@ clen_private_DynamicPrintAll()
 
   Loop %Difference%
   {
-     Index := clen_private_DynamicIndexBegin + A_Index - 1
-     Clipboard := clen_private_DynamicClip%Index%
+     Index := clen_DynamicIndexBegin + A_Index - 1
+     Clipboard := clen_DynamicClip%Index%
      Content .= "-> "
      Content .= Clipboard
      Content .= "`n"
   }
 
-  if (!clen_private_DynamicIsStack)
+  if (!clen_DynamicIsStack)
   {
      Type := "QUEUE"
   }
@@ -114,27 +114,27 @@ clen_private_DynamicPrintAll()
 }
 
 !NumpadMult::
-  clen_private_DynamicPrintAll()
+  clen_DynamicPrintAll()
   return
 
 !NumpadEnd::
-  if (clen_private_DynamicIsStack)
+  if (clen_DynamicIsStack)
   {
-     clen_private_DynamicIsStack = 0
+     clen_DynamicIsStack = 0
      TrayTip, clen : Dynamic, Clipboard Dynamic model is switched to QUEUE, 10, 1
   }
   else
   {
-     clen_private_DynamicIsStack = 1
+     clen_DynamicIsStack = 1
      TrayTip, clen : Dynamic, Clipboard Dynamic model is switched to STACK, 10, 1
   }
   return
 
 ^NumpadIns::
-  clen_private_DynamicCopy()
+  clen_DynamicCopy()
   return
 
 +NumpadIns::
 +NumpadDel::
-  clen_private_DynamicPaste(clen_private_RecognizeNumpadHotkey(A_ThisHotkey))
+  clen_DynamicPaste(clen_RecognizeNumpadHotkey(A_ThisHotkey))
   return

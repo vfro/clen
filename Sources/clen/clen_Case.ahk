@@ -10,12 +10,12 @@
 ; limitations under the License.
 
 
-clen_private_ToCase(toCase)
+clen_ToCase(toCase)
 {
   local ClipboardOld := ClipboardAll
   local Value
 
-  clen_private_Copy()
+  clen_Copy()
 
   Value := Clipboard
   if (toCase)
@@ -28,10 +28,10 @@ clen_private_ToCase(toCase)
   }
   Clipboard := Value
 
-  clen_private_Paste()
+  clen_Paste()
   Sleep, 100
 
-  if (clen_public_ModeRestoreClipboard)
+  if (clen_ModeRestoreClipboard)
   {
      Clipboard := ClipboardOld
   }
@@ -39,9 +39,9 @@ clen_private_ToCase(toCase)
 }
 
 ^NumpadSub::
-  clen_private_ToCase(false)
+  clen_ToCase(false)
   return
 
 ^NumpadAdd::
-  clen_private_ToCase(true)
+  clen_ToCase(true)
   return

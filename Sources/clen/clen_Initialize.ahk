@@ -10,75 +10,75 @@
 ; limitations under the License.
 
 
-clen_private_Initialize()
+clen_Initialize()
 
-clen_private_InitializeNumLock()
+clen_InitializeNumLock()
 {
   local NumLockState
 
   GetKeyState, NumLockState, NumLock, T
-  clen_private_NumLockState := NumLockState
+  clen_NumLockState := NumLockState
 }
 
-clen_private_InitializeCopyPasteMode()
+clen_InitializeCopyPasteMode()
 {
   local Index
 
-  if (!clen_private_IsCopyPasteModeInitialized)
+  if (!clen_IsCopyPasteModeInitialized)
   {
-     clen_private_IsCopyPasteModeInitialized = 1
+     clen_IsCopyPasteModeInitialized = 1
 
-     clen_private_CopyPasteInsert = true
+     clen_CopyPasteInsert = true
   }
   return
 }
 
-clen_private_DynamicInitialize()
+clen_DynamicInitialize()
 {
   local Index
 
-  if (!clen_private_IsDynamicInitialized)
+  if (!clen_IsDynamicInitialized)
   {
-     clen_private_IsDynamicInitialized = 1
+     clen_IsDynamicInitialized = 1
 
-     clen_private_DynamicIsStack = 0
+     clen_DynamicIsStack = 0
 
-     clen_private_DynamicIndexBegin = 1
-     clen_private_DynamicIndexEnd = 1
+     clen_DynamicIndexBegin = 1
+     clen_DynamicIndexEnd = 1
   }
   return
 }
 
-clen_private_StaticInitialize()
+clen_StaticInitialize()
 {
    local Index
 
-   if (!clen_private_IsStaticInitialized)
+   if (!clen_IsStaticInitialized)
    {
-      clen_private_Print = 1
+      clen_Print = 1
 
-      clen_private_IsStaticInitialized = 1
-      clen_public_ModeRestoreClipboard = 1
+      clen_IsStaticInitialized = 1
+      clen_ModeRestoreClipboard = 1
 
-      clen_private_ClipBoard0 := ""
-      clen_private_ClipBoard1 := ""
-      clen_private_ClipBoard2 := ""
-      clen_private_ClipBoard3 := ""
-      clen_private_ClipBoard4 := ""
-      clen_private_ClipBoard5 := ""
-      clen_private_ClipBoard6 := ""
-      clen_private_ClipBoard7 := ""
-      clen_private_ClipBoard8 := ""
-      clen_private_ClipBoard9 := ""
+      clen_ClipBoard0 := ""
+      clen_ClipBoard1 := ""
+      clen_ClipBoard2 := ""
+      clen_ClipBoard3 := ""
+      clen_ClipBoard4 := ""
+      clen_ClipBoard5 := ""
+      clen_ClipBoard6 := ""
+      clen_ClipBoard7 := ""
+      clen_ClipBoard8 := ""
+      clen_ClipBoard9 := ""
    }
    return
 }
 
-clen_private_Initialize()
+clen_Initialize()
 {
-  clen_private_DynamicInitialize()
-  clen_private_StaticInitialize()
-  clen_private_InitializeNumLock()
-  clen_private_InitializeCopyPasteMode()
+  clen_DynamicInitialize()
+  clen_StaticInitialize()
+  clen_InitializeNumLock()
+  clen_InitializeCopyPasteMode()
   return
 }
