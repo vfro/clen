@@ -107,9 +107,51 @@ clen_PrintStatic()
   }
   return
 
+clen_CtrlNumpad(NumpadHotkey)
+{
+  local RemappedNumpadKey = SubStr(NumpadHotkey, 3)
+
+  Hotkey, ^NumpadEnd, Off
+  Hotkey, ^NumpadDown, Off
+  Hotkey, ^NumpadPgDn, Off
+  Hotkey, ^NumpadLeft, Off
+  Hotkey, ^NumpadClear, Off
+  Hotkey, ^NumpadRight, Off
+  Hotkey, ^NumpadHome, Off
+  Hotkey, ^NumpadUp, Off
+  Hotkey, ^NumpadPgUp, Off
+
+  SendInput {Ctrl Down}{%RemappedNumpadKey% Down}{%RemappedNumpadKey% Up}{Ctrl Up}
+
+  Hotkey, ^NumpadEnd, On
+  Hotkey, ^NumpadDown, On
+  Hotkey, ^NumpadPgDn, On
+  Hotkey, ^NumpadLeft, On
+  Hotkey, ^NumpadClear, On
+  Hotkey, ^NumpadRight, On
+  Hotkey, ^NumpadHome, On
+  Hotkey, ^NumpadUp, On
+  Hotkey, ^NumpadPgUp, On
+
+  return
+}
+
 ;
 ; Copy
 ;
+
+
+!^NumpadEnd::
+!^NumpadDown::
+!^NumpadPgDn::
+!^NumpadLeft::
+!^NumpadClear::
+!^NumpadRight::
+!^NumpadHome::
+!^NumpadUp::
+!^NumpadPgUp::
+  clen_CtrlNumpad(A_ThisHotkey)
+  return
 
 ^NumpadEnd::
 ^NumpadDown::
