@@ -24,7 +24,7 @@ clen_DynamicCopy()
 
   clen_DynamicIndexEnd++
 
-  if(clen_ModeRestoreClipboard)
+  if(!clen_ModeDuplicateToRegular)
   {
      Clipboard := ClipboardOld
   }
@@ -70,7 +70,7 @@ clen_DynamicPaste(ReverseMode)
 
   clen_Paste()
 
-  if(clen_ModeRestoreClipboard)
+  if(!clen_ModeDuplicateToRegular)
   {
      Clipboard := ClipboardOld
   }
@@ -117,16 +117,7 @@ clen_DynamicPrintAll()
   return
 
 !NumpadEnd::
-  if (clen_DynamicIsStack)
-  {
-     clen_DynamicIsStack = 0
-     TrayTip, clen : Dynamic, Clipboard Dynamic model is switched to QUEUE, 10, 1
-  }
-  else
-  {
-     clen_DynamicIsStack = 1
-     TrayTip, clen : Dynamic, Clipboard Dynamic model is switched to STACK, 10, 1
-  }
+  clen_MenuOptionStack(true)
   return
 
 ^NumpadIns::

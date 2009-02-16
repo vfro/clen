@@ -28,7 +28,7 @@ clen_InitializeCopyPasteMode()
   {
      clen_IsCopyPasteModeInitialized = 1
 
-     clen_CopyPasteInsert = true
+     clen_CopyPasteInsert := true
   }
   return
 }
@@ -55,10 +55,10 @@ clen_StaticInitialize()
 
    if (!clen_IsStaticInitialized)
    {
-      clen_Print = 1
-
       clen_IsStaticInitialized = 1
-      clen_ModeRestoreClipboard = 1
+
+      clen_Print = 1
+      clen_ModeDuplicateToRegular = 0
 
       clen_ClipBoard0 := ""
       clen_ClipBoard1 := ""
@@ -80,5 +80,6 @@ clen_Initialize()
   clen_StaticInitialize()
   clen_InitializeNumLock()
   clen_InitializeCopyPasteMode()
+  clen_InitializeTrayMenu()
   return
 }

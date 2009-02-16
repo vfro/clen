@@ -30,7 +30,7 @@ clen_ToCase(toCase)
 
   clen_Paste()
 
-  if (clen_ModeRestoreClipboard)
+  if (!clen_ModeDuplicateToRegular)
   {
      Clipboard := ClipboardOld
   }

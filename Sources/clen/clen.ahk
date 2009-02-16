@@ -13,8 +13,11 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-
-#include clen/clen_CopyPaste.ahk
-#include clen/clen_StaticClipboards.ahk
-#include clen/clen_DynamicClipboards.ahk
-#include clen/clen_SaveLoad.ahk
+#include clen\clen_Initialize.ahk
+#include clen\clen_Numpad.ahk
+#include clen\clen_CopyPaste.ahk
+#include clen\clen_DynamicClipboards.ahk
+#include clen\clen_StaticClipboards.ahk
+#include clen\clen_SaveLoad.ahk
+#include clen\clen_Case.ahk
+#include clen\clen_TrayMenu.ahk

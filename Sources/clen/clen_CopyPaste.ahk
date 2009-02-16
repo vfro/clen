@@ -49,16 +49,7 @@ clen_ChangeCopyPasteMode()
 {
   local Index
 
-  if (clen_CopyPasteInsert)
-  {
-    clen_CopyPasteInsert := false
-    TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+C\Ctrl+V, 10, 1
-  }
-  else
-  {
-    clen_CopyPasteInsert := true
-    TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+Insert\Shift+Insert, 10, 1
-  }
+  clen_MenuOptionCopyPaste(true)
   return
 }
 

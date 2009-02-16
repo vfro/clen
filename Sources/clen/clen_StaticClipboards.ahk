@@ -16,7 +16,7 @@ clen_StaticCopy(ClipboardNumber)
 
   clen_Copy()
   clen_ClipBoard%ClipboardNumber% := ClipboardAll
-  if (clen_ModeRestoreClipboard)
+  if (!clen_ModeDuplicateToRegular)
   {
      Clipboard := ClipboardOld
   }
@@ -30,7 +30,7 @@ clen_StaticPaste(ClipboardNumber)
   Clipboard := clen_ClipBoard%ClipboardNumber%
   clen_Paste()
 
-  if (clen_ModeRestoreClipboard)
+  if (!clen_ModeDuplicateToRegular)
   {
      Clipboard := ClipboardOld
   }
@@ -82,29 +82,11 @@ clen_PrintStatic()
   return
 
 !NumpadPgDn::
-  if (clen_ModeRestoreClipboard)
-  {
-     clen_ModeRestoreClipboard := 0
-     TrayTip, clen : Static & Dynamic, Copy to regular clipboard is turned ON, 10, 1
-  }
-  else
-  {
-     clen_ModeRestoreClipboard := 1
-     TrayTip, clen : Static & Dynamic, Copy to regular clipboard is turned OFF, 10, 1
-  }
+  clen_MenuOptionDuplicateToRegular(true)
   return
 
 !NumpadDown::
-  if (clen_Print)
-  {
-     clen_Print = 0
-     TrayTip, clen : Static & Dynamic, Show keyboard content is turned OFF, 10, 1
-  }
-  else
-  {
-     clen_Print = 1
-     TrayTip, clen : Static & Dynamic, Show keyboard content is turned ON, 10, 1
-  }
+  clen_MenuOptionShowContent(true)
   return
 
 clen_CtrlNumpad(NumpadHotkey)

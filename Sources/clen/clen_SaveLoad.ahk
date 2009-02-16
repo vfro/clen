@@ -38,7 +38,7 @@ clen_LoadSettings()
   RegRead, clen_ClipBoard0, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, 0
 
   RegRead, clen_DynamicIsStack, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack
-  RegRead, clen_ModeRestoreClipboard, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard
+  RegRead, clen_ModeDuplicateToRegular, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular
   RegRead, clen_Print, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent
   RegRead, clen_CopyPasteInsert, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert
 
@@ -51,6 +51,11 @@ clen_LoadSettings()
   clen_DynamicIndexEnd += 1
 
   TrayTip, clen : Static & Dynamic, All clipboards and options were restored, 10, 1
+
+  clen_MenuOptionStack(false)
+  clen_MenuOptionDuplicateToRegular(false)
+  clen_MenuOptionShowContent(false)
+  clen_MenuOptionCopyPaste(false)
   return
 }
 
@@ -75,7 +80,7 @@ clen_SaveSettings()
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, 0, %Value%
 
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsStack, %clen_DynamicIsStack%
-  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsRestoreClipboard, %clen_ModeRestoreClipboard%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular, %clen_ModeDuplicateToRegular%
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent, %clen_Print%
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert, %clen_CopyPasteInsert%
 
@@ -90,7 +95,7 @@ clen_SaveSettings()
 
   Clipboard := ClipboardOld
 
-  TrayTip, clen : Static & Dynamic, All clipboards and options were saved, 10, 1
+  TrayTip, clen : Static & Dynamic, All clipboards and options were loaded, 10, 1
   return
 }
 
