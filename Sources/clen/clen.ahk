@@ -19,5 +19,4 @@
 #include clen\clen_DynamicClipboards.ahk
 #include clen\clen_StaticClipboards.ahk
 #include clen\clen_SaveLoad.ahk
-#include clen\clen_Case.ahk
 #include clen\clen_TrayMenu.ahk
