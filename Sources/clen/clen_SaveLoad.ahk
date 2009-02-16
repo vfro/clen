@@ -50,7 +50,7 @@ clen_LoadSettings()
   }
   clen_DynamicIndexEnd += 1
 
-  TrayTip, clen : Static & Dynamic, All clipboards and options were restored, 10, 1
+  TrayTip, clen : Static & Dynamic, All clipboards and options were loaded, 10, 1
 
   clen_MenuOptionStack(false)
   clen_MenuOptionDuplicateToRegular(false)
@@ -95,7 +95,7 @@ clen_SaveSettings()
 
   Clipboard := ClipboardOld
 
-  TrayTip, clen : Static & Dynamic, All clipboards and options were loaded, 10, 1
+  TrayTip, clen : Static & Dynamic, All clipboards and options were saved, 10, 1
   return
 }
 
