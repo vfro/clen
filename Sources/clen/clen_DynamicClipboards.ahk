@@ -68,6 +68,7 @@ clen_DynamicPaste(ReverseMode)
      clen_DynamicIndexEnd--
   }
 
+  clen_RegularIgnoreChange := true
   clen_Paste()
 
   if(!clen_ModeDuplicateToRegular)
@@ -92,6 +93,8 @@ clen_DynamicPrintAll()
 
   Loop %Difference%
   {
+     clen_RegularIgnoreChange := true
+
      Index := clen_DynamicIndexBegin + A_Index - 1
      Clipboard := clen_DynamicClip%Index%
      Content .= "-> "

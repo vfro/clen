@@ -12,24 +12,14 @@
 
 clen_Initialize()
 
-clen_InitializeNumLock()
-{
-  local NumLockState
-
-  GetKeyState, NumLockState, NumLock, T
-  clen_NumLockState := NumLockState
-}
-
 clen_InitializeCopyPasteMode()
 {
   local Index
 
-  if (!clen_IsCopyPasteModeInitialized)
-  {
-     clen_IsCopyPasteModeInitialized = 1
+  clen_IsCopyPasteModeInitialized = 1
 
-     clen_CopyPasteInsert := true
-  }
+  clen_CopyPasteInsert := true
+
   return
 }
 
@@ -37,48 +27,57 @@ clen_DynamicInitialize()
 {
   local Index
 
-  if (!clen_IsDynamicInitialized)
-  {
-     clen_IsDynamicInitialized = 1
+  clen_IsDynamicInitialized = 1
 
-     clen_DynamicIsStack = 0
+  clen_DynamicIsStack = 0
 
-     clen_DynamicIndexBegin = 1
-     clen_DynamicIndexEnd = 1
-  }
+  clen_DynamicIndexBegin = 1
+  clen_DynamicIndexEnd = 1
+
   return
 }
 
 clen_StaticInitialize()
 {
-   local Index
+  local Index
 
-   if (!clen_IsStaticInitialized)
-   {
-      clen_IsStaticInitialized = 1
+  clen_Print = 1
+  clen_ModeDuplicateToRegular = 0
 
-      clen_Print = 1
-      clen_ModeDuplicateToRegular = 0
+  clen_ClipBoard0 := ""
+  clen_ClipBoard1 := ""
+  clen_ClipBoard2 := ""
+  clen_ClipBoard3 := ""
+  clen_ClipBoard4 := ""
+  clen_ClipBoard5 := ""
+  clen_ClipBoard6 := ""
+  clen_ClipBoard7 := ""
+  clen_ClipBoard8 := ""
+  clen_ClipBoard9 := ""
 
-      clen_ClipBoard0 := ""
-      clen_ClipBoard1 := ""
-      clen_ClipBoard2 := ""
-      clen_ClipBoard3 := ""
-      clen_ClipBoard4 := ""
-      clen_ClipBoard5 := ""
-      clen_ClipBoard6 := ""
-      clen_ClipBoard7 := ""
-      clen_ClipBoard8 := ""
-      clen_ClipBoard9 := ""
-   }
-   return
+  return
+}
+
+clen_RegularInitialize()
+{
+  local Index
+
+  clen_RegularPrint := true
+  clen_RegularIgnoreChange := false
+
+  clen_RegularIndex = 0
+  clen_RegularMaxRedo = 0
+
+  clen_RegularFirstCall := true
+
+  return
 }
 
 clen_Initialize()
 {
   clen_DynamicInitialize()
   clen_StaticInitialize()
-  clen_InitializeNumLock()
+  clen_RegularInitialize()
   clen_InitializeCopyPasteMode()
   clen_InitializeTrayMenu()
   return

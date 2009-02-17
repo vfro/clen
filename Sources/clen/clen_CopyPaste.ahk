@@ -14,6 +14,8 @@ clen_Copy()
 {
   local Index
 
+  clen_RegularIgnoreChange := true
+
   Clipboard =
   if (clen_CopyPasteInsert)
   {

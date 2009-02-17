@@ -11,7 +11,7 @@
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v0.7.1 c 2008-2009 Volodymyr Frolov`nLicensed under the Apache License`, Version 2.0
+  Menu, Tray, Tip, Clipboard Enhanced v0.7.1 © 2008-2009 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
@@ -19,6 +19,7 @@ clen_InitializeTrayMenu()
   clen_MenuOptionDuplicateToRegular(false)
   clen_MenuOptionShowContent(false)
   clen_MenuOptionCopyPaste(false)
+  clen_MenuOptionShowRegular(false)
 
   Menu, tray, add, Options, :Options
 
@@ -144,6 +145,25 @@ clen_MenuOptionCopyPaste(Change)
   return
 }
 
+clen_MenuOptionShowRegular(Change)
+{
+  local Fake
+
+  clen_MenuOption("clen_RegularPrint", "Options", "Show regular keyboard content when it is changed`tAlt+NumpadClear", "ShowRegularContent", Change)
+  if (Change)
+  {
+     if (clen_RegularPrint)
+     {
+       TrayTip, clen : Regular, Show regular keyboard content is turned ON, 10, 1
+     }
+     else
+     {
+       TrayTip, clen : Regular, Show regular keyboard content is turned OFF, 10, 1
+     }
+  }
+  return
+}
+
 StackBased:
   clen_MenuOptionStack(true)
   return
@@ -158,6 +178,10 @@ AutoShowContent:
 
 CopyPasteInsert:
   clen_MenuOptionCopyPaste(true)
+  return
+
+ShowRegularContent:
+  clen_MenuOptionShowRegular(true)
   return
 
 StaticContent:

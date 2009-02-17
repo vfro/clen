@@ -41,6 +41,7 @@ clen_LoadSettings()
   RegRead, clen_ModeDuplicateToRegular, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular
   RegRead, clen_Print, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent
   RegRead, clen_CopyPasteInsert, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert
+  RegRead, clen_RegularPrint, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowRegular
 
   clen_DynamicIndexBegin = 1
   RegRead, clen_DynamicIndexEnd, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count
@@ -66,8 +67,7 @@ clen_SaveSettings()
   local Index = 0
   local ClipboardOld := ClipboardAll
 
-  clen_DynamicInitialize()
-  clen_StaticInitialize()
+  clen_RegularIgnoreChange := true
 
   RegDelete, HKEY_CURRENT_USER, Software\clen
 
@@ -83,6 +83,7 @@ clen_SaveSettings()
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular, %clen_ModeDuplicateToRegular%
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowContent, %clen_Print%
   RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsCtrlInsert, %clen_CopyPasteInsert%
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, IsShowRegular, %clen_RegularPrint%
 
   RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count, %Difference%
   Loop %Difference%

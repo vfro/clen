@@ -18,5 +18,6 @@
 #include clen\clen_CopyPaste.ahk
 #include clen\clen_DynamicClipboards.ahk
 #include clen\clen_StaticClipboards.ahk
+#include clen\clen_RegularClipboard.ahk
 #include clen\clen_SaveLoad.ahk
 #include clen\clen_TrayMenu.ahk

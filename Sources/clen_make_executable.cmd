@@ -16,6 +16,7 @@ cat clen\clen_Numpad.ahk >> clen.ahk
 cat clen\clen_CopyPaste.ahk >> clen.ahk
 cat clen\clen_DynamicClipboards.ahk >> clen.ahk
 cat clen\clen_StaticClipboards.ahk >> clen.ahk
+cat clen\clen_RegularClipboard.ahk >> clen.ahk
 cat clen\clen_SaveLoad.ahk >> clen.ahk
 cat clen\clen_TrayMenu.ahk >> clen.ahk
 

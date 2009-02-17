@@ -28,6 +28,8 @@ clen_StaticPaste(ClipboardNumber)
   local ClipboardOld := ClipboardAll
 
   Clipboard := clen_ClipBoard%ClipboardNumber%
+  clen_RegularIgnoreChange := true
+
   clen_Paste()
 
   if (!clen_ModeDuplicateToRegular)
