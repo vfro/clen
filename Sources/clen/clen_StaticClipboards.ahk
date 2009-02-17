@@ -105,11 +105,11 @@ clen_CtrlNumpad(NumpadHotkey)
   Hotkey, ^NumpadUp, Off
   Hotkey, ^NumpadPgUp, Off
   Hotkey, ^NumpadIns, Off
+  Hotkey, ^NumpadAdd, Off
+  Hotkey, ^NumpadSub, Off
   ; Uncomment when one of those hotkeys will be available
   ; Hotkey, ^NumpadDel, Off
   ; Hotkey, ^NumpadEnter, Off
-  ; Hotkey, ^NumpadAdd, Off
-  ; Hotkey, ^NumpadSub, Off
   ; Hotkey, ^NumpadMul, Off
   ; Hotkey, ^NumpadDiv, Off
 
@@ -125,11 +125,11 @@ clen_CtrlNumpad(NumpadHotkey)
   Hotkey, ^NumpadUp, On
   Hotkey, ^NumpadPgUp, On
   Hotkey, ^NumpadIns, On
+  Hotkey, ^NumpadAdd, On
+  Hotkey, ^NumpadSub, On
   ; Uncomment when one of those hotkeys will be available
   ; Hotkey, ^NumpadDel, On
   ; Hotkey, ^NumpadEnter, On
-  ; Hotkey, ^NumpadAdd, On
-  ; Hotkey, ^NumpadSub, On
   ; Hotkey, ^NumpadMult, On
   ; Hotkey, ^NumpadDiv, On
 
