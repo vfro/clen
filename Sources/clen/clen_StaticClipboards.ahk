@@ -60,6 +60,7 @@ clen_PrintStaticContent()
 {
   local clipAll =
 
+  clen_RegularIgnoreChange := true
   Loop 9
   {
      clipAll .= clen_GetClipPrintableData(A_Index)

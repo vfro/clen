@@ -91,6 +91,8 @@ clen_DynamicPrintAll()
   local Type := ""
   local ClipboardOld := ClipboardAll
 
+  clen_RegularIgnoreChange := true
+
   Loop %Difference%
   {
      clen_RegularIgnoreChange := true
