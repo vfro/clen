@@ -26,7 +26,7 @@ clen_DynamicCopy()
 
   if(!clen_ModeDuplicateToRegular)
   {
-     Clipboard := ClipboardOld
+     clen_ChangeClipboard(ClipboardOld)
   }
 
   if(clen_Print)
@@ -52,7 +52,8 @@ clen_DynamicPaste(ReverseMode)
      {
         return
      }
-     Clipboard := clen_DynamicClip%clen_DynamicIndexBegin%
+     clen_ChangeClipboard(clen_DynamicClip%clen_DynamicIndexBegin%)
+
      clen_DynamicClip%clen_DynamicIndexBegin% := ""
      clen_DynamicIndexBegin++
   }
@@ -62,18 +63,18 @@ clen_DynamicPaste(ReverseMode)
      {
         return
      }
-     
-     Clipboard := clen_DynamicClip%StackIndex%
+
+     clen_ChangeClipboard(clen_DynamicClip%StackIndex%)
+
      clen_DynamicClip%StackIndex% := ""
      clen_DynamicIndexEnd--
   }
 
-  clen_RegularIgnoreChange := true
   clen_Paste()
 
   if(!clen_ModeDuplicateToRegular)
   {
-     Clipboard := ClipboardOld
+     clen_ChangeClipboard(ClipboardOld)
   }
 
   if(clen_Print)
@@ -91,14 +92,12 @@ clen_DynamicPrintAll()
   local Type := ""
   local ClipboardOld := ClipboardAll
 
-  clen_RegularIgnoreChange := true
-
   Loop %Difference%
   {
-     clen_RegularIgnoreChange := true
-
      Index := clen_DynamicIndexBegin + A_Index - 1
-     Clipboard := clen_DynamicClip%Index%
+
+     clen_ChangeClipboard(clen_DynamicClip%Index%)
+
      Content .= "-> "
      Content .= Clipboard
      Content .= "`n"
@@ -113,7 +112,7 @@ clen_DynamicPrintAll()
      Type := "STACK"
   }
 
-  Clipboard := ClipboardOld
+  clen_ChangeClipboard(ClipboardOld)
   TrayTip, clen : Dynamic %Type%, %Content%, 10, 1
 }
 

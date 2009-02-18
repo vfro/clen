@@ -27,8 +27,6 @@ clen_DynamicInitialize()
 {
   local Index
 
-  clen_IsDynamicInitialized = 1
-
   clen_DynamicIsStack = 0
 
   clen_DynamicIndexBegin = 1

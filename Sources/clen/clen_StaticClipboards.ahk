@@ -18,7 +18,7 @@ clen_StaticCopy(ClipboardNumber)
   clen_ClipBoard%ClipboardNumber% := ClipboardAll
   if (!clen_ModeDuplicateToRegular)
   {
-     Clipboard := ClipboardOld
+     clen_ChangeClipboard(ClipboardOld)
   }
   return
 }
@@ -27,14 +27,13 @@ clen_StaticPaste(ClipboardNumber)
 {
   local ClipboardOld := ClipboardAll
 
-  Clipboard := clen_ClipBoard%ClipboardNumber%
-  clen_RegularIgnoreChange := true
+  clen_ChangeClipboard(clen_ClipBoard%ClipboardNumber%)
 
   clen_Paste()
 
   if (!clen_ModeDuplicateToRegular)
   {
-     Clipboard := ClipboardOld
+    clen_ChangeClipboard(ClipboardOld)
   }
   return
 }
@@ -45,14 +44,14 @@ clen_GetClipPrintableData(ClipIndex)
   local ClipData =
   local ClipboardOld := ClipboardAll
 
-  Clipboard := clen_ClipBoard%ClipIndex%
+  clen_ChangeClipboard(clen_ClipBoard%ClipIndex%)
   ClipData := Clipboard
   if ClipData is not space
   {
     Result = %ClipIndex% -> %ClipData%`n
   }
 
-  Clipboard := ClipboardOld
+  clen_ChangeClipboard(ClipboardOld)
   return %Result%
 }
 
@@ -60,7 +59,6 @@ clen_PrintStaticContent()
 {
   local clipAll =
 
-  clen_RegularIgnoreChange := true
   Loop 9
   {
      clipAll .= clen_GetClipPrintableData(A_Index)

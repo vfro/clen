@@ -16,14 +16,14 @@ clen_SaveClipData(ClipIndex)
   local ClipData =
   local ClipboardOld := ClipboardAll
 
-  Clipboard := clen_ClipBoard%ClipIndex%
+  clen_ChangeClipboard(clen_ClipBoard%ClipIndex%)
   ClipData := Clipboard
   if ClipData is not space
   {
     Result = %ClipData%
   }
 
-  Clipboard := ClipboardOld
+  clen_ChangeClipboard(ClipboardOld)
   return %Result%
 }
 
@@ -67,8 +67,6 @@ clen_SaveSettings()
   local Index = 0
   local ClipboardOld := ClipboardAll
 
-  clen_RegularIgnoreChange := true
-
   RegDelete, HKEY_CURRENT_USER, Software\clen
 
   Loop 9
@@ -89,12 +87,13 @@ clen_SaveSettings()
   Loop %Difference%
   {
      Index := clen_DynamicIndexBegin + A_Index - 1
-     Clipboard := clen_DynamicClip%Index%
+
+     clen_ChangeClipboard(clen_DynamicClip%Index%)
      Value := Clipboard
      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\dynamic, %A_Index%, %Value%
   }
 
-  Clipboard := ClipboardOld
+  clen_ChangeClipboard(ClipboardOld)
 
   TrayTip, clen : Static & Dynamic, All clipboards and options were saved, 10, 1
   return

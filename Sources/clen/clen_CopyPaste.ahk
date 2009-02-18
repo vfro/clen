@@ -14,19 +14,21 @@ clen_Copy()
 {
   local Index
 
-  clen_RegularIgnoreChange := true
+  clen_ChangeClipboard("")
 
-  Clipboard =
   if (clen_CopyPasteInsert)
   {
+    clen_RegularIgnoreChange := true
     SendInput {Ctrl Down}{Insert Down}{Insert Up}{Ctrl Up}
   }
   else
   {
+    clen_RegularIgnoreChange := true
     SendInput {Ctrl Down}{c Down}{c Up}{Ctrl Up}
   }
 
   ClipWait, 0.5, 1
+  clen_WaitForIngoreClipboardChange()
   return
 }
 
@@ -44,6 +46,34 @@ clen_Paste()
   }
 
   Sleep, 100
+  return
+}
+
+clen_WaitForIngoreClipboardChange()
+{
+  local Index
+  ; Allow OnClipboardChange to be invoked and ignore clipboard change.
+  ; This is necessary to prevent race conditions with OnClipboardChange event.
+  Loop
+  {
+    Sleep, 5
+    if (!clen_RegularIgnoreChange)
+    {
+      break
+    }
+  }
+
+  return
+}
+
+clen_ChangeClipboard(NewValue)
+{
+  local Index
+
+  clen_RegularIgnoreChange := true
+  Clipboard := NewValue
+
+  clen_WaitForIngoreClipboardChange()
   return
 }
 

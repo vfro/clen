@@ -15,7 +15,7 @@ clen_RegularClipboardChaged()
 
   if (clen_RegularIgnoreChange)
   {
-    clen_RegularIgnoreChange := fasle
+    clen_RegularIgnoreChange := false
     return
   }
 
@@ -53,8 +53,7 @@ clen_RegularUndo()
 
     if (clen_RegularIndex > 0)
     {
-      clen_RegularIgnoreChange := true
-      Clipboard := clen_RegularClip%Index%
+      clen_ChangeClipboard(clen_RegularClip%Index%)
 
       if (clen_RegularPrint)
       {
@@ -79,8 +78,7 @@ clen_RegularRedo()
 
   if (clen_RegularIndex < clen_RegularMaxRedo)
   {
-    clen_RegularIgnoreChange := true
-    Clipboard := clen_RegularClip%clen_RegularIndex%
+    clen_ChangeClipboard(clen_RegularClip%clen_RegularIndex%)
     clen_RegularIndex++
 
     if (clen_RegularPrint)
