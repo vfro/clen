@@ -12,6 +12,8 @@
 clen_RegularClipboardChaged()
 {
   local Index
+  local PrevClipboardValue
+  local ThisClipboardValue
 
   if (clen_RegularIgnoreChange)
   {
@@ -23,8 +25,21 @@ clen_RegularClipboardChaged()
   {
     clen_RegularClip%clen_RegularIndex% := ClipboardAll
 
-    clen_RegularIndex++
-    clen_RegularMaxRedo := clen_RegularIndex
+    Index := clen_RegularIndex - 1
+    if (Index > 0)
+    {
+      PrevClipboardValue := clen_RegularClip%Index%
+    }
+
+    if clen_RegularClip%clen_RegularIndex% <> %PrevClipboardValue%
+    {
+      clen_RegularIndex++
+      clen_RegularMaxRedo := clen_RegularIndex
+    }
+    else
+    {
+      return
+    }
   }
 
   if (clen_RegularFirstCall)
@@ -37,7 +52,7 @@ clen_RegularClipboardChaged()
   {
     if (clen_RegularPrint)
     {
-      TrayTip, clen : Regular, Insert -> %Clipboard%, 10, 1
+      TrayTip, clen : Regular, %Clipboard%, 10, 1
     }
   }
   return
