@@ -21,25 +21,24 @@ clen_RegularClipboardChaged()
     return
   }
 
-  if (A_EventInfo == 1)
+  clen_RegularClip%clen_RegularIndex% := ClipboardAll
+  clen_RegularClipInfo%clen_RegularIndex% := A_EventInfo
+
+  Index := clen_RegularIndex - 1
+  if (Index > 0)
   {
-    clen_RegularClip%clen_RegularIndex% := ClipboardAll
+    PrevClipboardValue := clen_RegularClip%Index%
+  }
 
-    Index := clen_RegularIndex - 1
-    if (Index > 0)
-    {
-      PrevClipboardValue := clen_RegularClip%Index%
-    }
-
-    if clen_RegularClip%clen_RegularIndex% <> %PrevClipboardValue%
-    {
-      clen_RegularIndex++
-      clen_RegularMaxRedo := clen_RegularIndex
-    }
-    else
-    {
-      return
-    }
+  if clen_RegularClip%clen_RegularIndex% <> %PrevClipboardValue%
+  {
+    ThisClipboardValue := clen_RegularClip%clen_RegularIndex%
+    clen_RegularIndex++
+    clen_RegularMaxRedo := clen_RegularIndex
+  }
+  else
+  {
+    return
   }
 
   if (clen_RegularFirstCall)
@@ -48,11 +47,16 @@ clen_RegularClipboardChaged()
     return
   }
 
-  if (A_EventInfo == 1)
+  if (clen_RegularPrint)
   {
-    if (clen_RegularPrint)
+    if (A_EventInfo == 1)
     {
-      TrayTip, clen : Regular, %Clipboard%, 10, 1
+      ThisClipboardValue := clen_GetPrintableValue(ThisClipboardValue)
+      TrayTip, clen : Regular,%ThisClipboardValue%, 10, 1
+    }
+    else
+    {
+      TrayTip, clen : Regular,<binary data>, 10, 1
     }
   }
   return
@@ -72,7 +76,14 @@ clen_RegularUndo()
 
       if (clen_RegularPrint)
       {
-        TrayTip, clen : Regular, Value(%clen_RegularIndex% from %clen_RegularMaxRedo%) -> %Clipboard%, 10, 1
+        if (clen_RegularClipInfo%Index% == 1)
+        {
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%Clipboard%, 10, 1
+        }
+        else
+        {
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1
+        }
       }
     }
     else
@@ -89,7 +100,7 @@ clen_RegularUndo()
 
 clen_RegularRedo()
 {
-  local Index
+  local Index := clen_RegularIndex
 
   if (clen_RegularIndex < clen_RegularMaxRedo)
   {
@@ -98,8 +109,16 @@ clen_RegularRedo()
 
     if (clen_RegularPrint)
     {
-      TrayTip, clen : Regular, Value(%clen_RegularIndex% from %clen_RegularMaxRedo%) -> %Clipboard%, 10, 1
+        if (clen_RegularClipInfo%Index% == 1)
+        {
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%Clipboard%, 10, 1
+        }
+        else
+        {
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1
+        }
     }
+
   }
   else
   {
