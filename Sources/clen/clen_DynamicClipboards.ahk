@@ -90,16 +90,16 @@ clen_DynamicPrintAll()
   local Index = 0
   local Content := ""
   local Type := ""
-  local ClipboardOld := ClipboardAll
+  local PrintableValue
 
   Loop %Difference%
   {
      Index := clen_DynamicIndexBegin + A_Index - 1
 
-     clen_ChangeClipboard(clen_DynamicClip%Index%)
+     PrintableValue := clen_GetPrintableValue(clen_DynamicClip%Index%)
 
      Content .= "-> "
-     Content .= Clipboard
+     Content .= PrintableValue
      Content .= "`n"
   }
 

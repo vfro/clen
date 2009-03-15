@@ -41,11 +41,9 @@ clen_StaticPaste(ClipboardNumber)
 clen_GetClipPrintableData(ClipIndex)
 {
   local Result =
-  local ClipData =
-  local ClipboardOld := ClipboardAll
+  local ClipData
 
-  clen_ChangeClipboard(clen_ClipBoard%ClipIndex%)
-  ClipData := Clipboard
+  ClipData := clen_GetPrintableValue(clen_ClipBoard%ClipIndex%)
   if ClipData is not space
   {
     Result = %ClipIndex% -> %ClipData%`n

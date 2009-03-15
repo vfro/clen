@@ -13,7 +13,7 @@ clen_RegularClipboardChaged()
 {
   local Index
   local PrevClipboardValue
-  local ThisClipboardValue
+  local PrintableClipboard
 
   if (clen_RegularIgnoreChange)
   {
@@ -32,7 +32,6 @@ clen_RegularClipboardChaged()
 
   if clen_RegularClip%clen_RegularIndex% <> %PrevClipboardValue%
   {
-    ThisClipboardValue := clen_RegularClip%clen_RegularIndex%
     clen_RegularIndex++
     clen_RegularMaxRedo := clen_RegularIndex
   }
@@ -51,8 +50,8 @@ clen_RegularClipboardChaged()
   {
     if (A_EventInfo == 1)
     {
-      ThisClipboardValue := clen_GetPrintableValue(ThisClipboardValue)
-      TrayTip, clen : Regular,%ThisClipboardValue%, 10, 1
+      PrintableClipboard := clen_GetPrintableClipboardValue()
+      TrayTip, clen : Regular,%PrintableClipboard%, 10, 1
     }
     else
     {
@@ -65,6 +64,7 @@ clen_RegularClipboardChaged()
 clen_RegularUndo()
 {
   local Index = clen_RegularIndex - 2
+  local PrintableClipboard
 
   if (clen_RegularIndex > 0)
   {
@@ -78,7 +78,8 @@ clen_RegularUndo()
       {
         if (clen_RegularClipInfo%Index% == 1)
         {
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%Clipboard%, 10, 1
+          PrintableClipboard := clen_GetPrintableClipboardValue()
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1
         }
         else
         {
@@ -101,6 +102,7 @@ clen_RegularUndo()
 clen_RegularRedo()
 {
   local Index := clen_RegularIndex
+  local PrintableClipboard
 
   if (clen_RegularIndex < clen_RegularMaxRedo)
   {
@@ -111,7 +113,8 @@ clen_RegularRedo()
     {
         if (clen_RegularClipInfo%Index% == 1)
         {
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%Clipboard%, 10, 1
+          PrintableClipboard := clen_GetPrintableClipboardValue()
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1
         }
         else
         {

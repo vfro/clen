@@ -12,9 +12,9 @@
 
 clen_Copy()
 {
-  local Index
+  local EmptyValue := ""
 
-  clen_ChangeClipboard("")
+  clen_ChangeClipboard(EmptyValue)
 
   if (clen_CopyPasteInsert)
   {
@@ -66,7 +66,7 @@ clen_WaitForIngoreClipboardChange()
   return
 }
 
-clen_ChangeClipboard(NewValue)
+clen_ChangeClipboard(ByRef NewValue)
 {
   local Index
 
@@ -83,6 +83,25 @@ clen_ChangeCopyPasteMode()
 
   clen_MenuOptionCopyPaste(true)
   return
+}
+
+clen_GetPrintableValue(ByRef ClipboardValue)
+{
+  local PrintableValue
+  local ClipboardOld := ClipboardAll
+
+  clen_ChangeClipboard(ClipboardValue)
+  Transform, PrintableValue, Unicode
+  clen_ChangeClipboard(ClipboardOld)
+
+  return %PrintableValue%
+}
+
+clen_GetPrintableClipboardValue()
+{
+  local PrintableValue
+  Transform, PrintableValue, Unicode
+  return %PrintableValue%
 }
 
 !NumpadLeft::
