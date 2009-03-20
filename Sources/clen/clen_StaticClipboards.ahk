@@ -49,7 +49,6 @@ clen_GetClipPrintableData(ClipIndex)
     Result = %ClipIndex% -> %ClipData%`n
   }
 
-  clen_ChangeClipboard(ClipboardOld)
   return %Result%
 }
 

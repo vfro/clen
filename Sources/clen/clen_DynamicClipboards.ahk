@@ -112,7 +112,6 @@ clen_DynamicPrintAll()
      Type := "STACK"
   }
 
-  clen_ChangeClipboard(ClipboardOld)
   TrayTip, clen : Dynamic %Type%, %Content%, 10, 1
 }
 
