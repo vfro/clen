@@ -21,11 +21,17 @@ clen_RegularClipboardChaged()
     return
   }
 
+  if (clen_WaitForPassword)
+  {
+    clen_PasswordClipboardCopy()
+    return
+  }
+
   clen_RegularClip%clen_RegularIndex% := ClipboardAll
   clen_RegularClipInfo%clen_RegularIndex% := A_EventInfo
 
   Index := clen_RegularIndex - 1
-  if (Index > 0)
+  if (Index >= 0)
   {
     PrevClipboardValue := clen_RegularClip%Index%
   }

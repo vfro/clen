@@ -71,11 +71,20 @@ clen_RegularInitialize()
   return
 }
 
+clen_PasswordInitialize()
+{
+  local Index
+  clen_WaitForPassword := false
+  clen_ClipboardPassword := ""
+  return
+}
+
 clen_Initialize()
 {
   clen_DynamicInitialize()
   clen_StaticInitialize()
   clen_RegularInitialize()
+  clen_PasswordInitialize()
   clen_InitializeCopyPasteMode()
   clen_InitializeTrayMenu()
   return

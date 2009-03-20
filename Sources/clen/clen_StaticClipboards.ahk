@@ -104,10 +104,10 @@ clen_CtrlNumpad(NumpadHotkey)
   Hotkey, ^NumpadIns, Off
   Hotkey, ^NumpadAdd, Off
   Hotkey, ^NumpadSub, Off
+  Hotkey, ^NumpadMult, Off
   ; Uncomment when one of those hotkeys will be available
   ; Hotkey, ^NumpadDel, Off
   ; Hotkey, ^NumpadEnter, Off
-  ; Hotkey, ^NumpadMul, Off
   ; Hotkey, ^NumpadDiv, Off
 
   SendInput {Ctrl Down}{%RemappedNumpadKey% Down}{%RemappedNumpadKey% Up}{Ctrl Up}
@@ -124,10 +124,10 @@ clen_CtrlNumpad(NumpadHotkey)
   Hotkey, ^NumpadIns, On
   Hotkey, ^NumpadAdd, On
   Hotkey, ^NumpadSub, On
+  Hotkey, ^NumpadMult, On
   ; Uncomment when one of those hotkeys will be available
   ; Hotkey, ^NumpadDel, On
   ; Hotkey, ^NumpadEnter, On
-  ; Hotkey, ^NumpadMult, On
   ; Hotkey, ^NumpadDiv, On
 
   return
