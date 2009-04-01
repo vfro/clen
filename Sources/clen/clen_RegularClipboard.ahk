@@ -136,6 +136,18 @@ clen_RegularRedo()
   return
 }
 
+clen_RegularPasteWithoutFormating()
+{
+  local ClipboardOld := ClipboardAll
+  local ClipboardWithoutFormating := Clipboard
+
+  clen_ChangeClipboard(ClipboardWithoutFormating)
+  clen_Paste()
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
 OnClipboardChange:
   clen_RegularClipboardChaged()
   return
@@ -146,4 +158,8 @@ OnClipboardChange:
 
 ^NumpadAdd::
   clen_RegularRedo()
+  return
+
+!Insert::
+  clen_RegularPasteWithoutFormating()
   return
