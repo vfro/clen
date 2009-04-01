@@ -9,11 +9,26 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-clen_PasswordClipboardCopy()
+clen_PasswordClipboardShow(Size)
+{
+  local ClipboardShow := ""
+
+  if (clen_Print)
+  {
+    Loop %Size%
+    {
+      ClipboardShow .= "*"
+    }
+
+    TrayTip, clen : Password,Password: %ClipboardShow%, 30, 1
+  }
+  return
+}
+
+clen_PasswordClipboardWaitedCopy()
 {
   local Index := clen_RegularIndex - 1
   local ClipboardSize := StrLen(Clipboard)
-  local ClipboardShow := ""
   local OldClipboard := ""
 
   clen_ClipboardPassword := ClipboardAll
@@ -25,12 +40,25 @@ clen_PasswordClipboardCopy()
   Clipboard := OldClipboard
   clen_WaitForPassword := false
 
-  Loop %ClipboardSize%
-  {
-    ClipboardShow .= "*"
-  }
+  clen_PasswordClipboardShow(ClipboardSize)
 
-  TrayTip, clen : Password,Password: %ClipboardShow%, 30, 1
+  return
+}
+
+clen_PasswordClipboardCopy()
+{
+  local OldClipboard := ClipboardAll
+  local ClipboardSize := 0
+
+  clen_Copy()
+  ClipboardSize := StrLen(Clipboard)
+
+  clen_ClipboardPassword := ClipboardAll
+
+  clen_ChangeClipboard(OldClipboard)
+  clen_WaitForPassword := false
+
+  clen_PasswordClipboardShow(ClipboardSize)
 
   return
 }
@@ -56,7 +84,10 @@ clen_PasswordClipboardPaste()
     }
   }
 
-  TrayTip, clen : Password,Password Clipboard is empty, 10, 1
+  if (clen_Print)
+  {
+    TrayTip, clen : Password,Password Clipboard is empty, 10, 1
+  }
   return
 }
 
@@ -67,12 +98,19 @@ clen_PasswordClipboardWaitForCopy()
   clen_WaitForPassword := true
   clen_ClipboardPassword := ""
 
-  TrayTip, clen : Password,Waiting for password, 10, 1
+  if (clen_Print)
+  {
+    TrayTip, clen : Password,Waiting for password, 10, 1
+  }
   return
 }
 
-^NumpadMult::
++^NumpadMult::
   clen_PasswordClipboardWaitForCopy()
+  return
+
+^NumpadMult::
+  clen_PasswordClipboardCopy()
   return
 
 +NumpadMult::

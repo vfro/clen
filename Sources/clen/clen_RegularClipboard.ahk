@@ -23,7 +23,7 @@ clen_RegularClipboardChaged()
 
   if (clen_WaitForPassword)
   {
-    clen_PasswordClipboardCopy()
+    clen_PasswordClipboardWaitedCopy()
     return
   }
 
@@ -52,7 +52,7 @@ clen_RegularClipboardChaged()
     return
   }
 
-  if (clen_RegularPrint)
+  if (clen_Print)
   {
     if (A_EventInfo == 1)
     {
@@ -80,7 +80,7 @@ clen_RegularUndo()
     {
       clen_ChangeClipboard(clen_RegularClip%Index%)
 
-      if (clen_RegularPrint)
+      if (clen_Print)
       {
         if (clen_RegularClipInfo%Index% == 1)
         {
@@ -115,7 +115,7 @@ clen_RegularRedo()
     clen_ChangeClipboard(clen_RegularClip%clen_RegularIndex%)
     clen_RegularIndex++
 
-    if (clen_RegularPrint)
+    if (clen_Print)
     {
         if (clen_RegularClipInfo%Index% == 1)
         {
@@ -146,8 +146,4 @@ OnClipboardChange:
 
 ^NumpadAdd::
   clen_RegularRedo()
-  return
-
-!NumpadClear::
-  clen_MenuOptionShowRegular(true)
   return

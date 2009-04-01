@@ -60,7 +60,6 @@ clen_RegularInitialize()
 {
   local Index
 
-  clen_RegularPrint := true
   clen_RegularIgnoreChange := false
 
   clen_RegularIndex = 0
