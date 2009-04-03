@@ -21,6 +21,7 @@ clen_InitializeTrayMenu()
   clen_MenuOptionCopyPaste(false)
 
   Menu, tray, add, Options, :Options
+  clen_AutorunMenuOption(false)
 
   Menu, tray, add
   Menu, tray, add, Save dynamic and static clipboards`tAlt+NumpadEnter, SaveOptions
@@ -52,7 +53,64 @@ clen_CheckForFirstRun()
     RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular, 0
     RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, AutoShowContent, 1
     RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, CopyPasteInsert, 1
+
+    if (A_IsCompiled)
+    {
+      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+    }
   }
+  return
+}
+
+clen_AutorunMenuOption(Change)
+{
+  local OptionString := ""
+  local OptionValue
+  local Submenu := "Run when Windows starts"
+
+  if (!A_IsCompiled)
+  {
+    return
+  }
+
+  RegRead, OptionString, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen
+
+  if (ErrorLevel || StrLen(OptionString) == 0)
+  {
+    OptionValue := false
+  }
+  else
+  {
+    OptionValue := true
+  }
+
+  if (Change)
+  {
+    if (OptionValue)
+    {
+      OptionValue := false
+      RegDelete, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen
+    }
+    else
+    {
+      OptionValue := true
+      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+    }
+  }
+  else
+  {
+    Menu, tray, add, %Submenu%, ClenAutorun
+  }
+
+  if (OptionValue)
+  {
+    Menu, tray, Check, %Submenu%
+  }
+  else
+  {
+    Menu, tray, Uncheck, %Submenu%
+  }
+
   return
 }
 
@@ -168,6 +226,10 @@ clen_MenuOptionCopyPaste(Change)
   }
   return
 }
+
+ClenAutorun:
+  clen_AutorunMenuOption(true)
+  return
 
 DynamicIsStack:
   clen_MenuOptionStack(true)
