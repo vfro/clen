@@ -80,6 +80,8 @@ clen_PasswordInitialize()
 
 clen_Initialize()
 {
+  clen_CheckForFirstRun()
+
   clen_DynamicInitialize()
   clen_StaticInitialize()
   clen_RegularInitialize()

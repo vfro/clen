@@ -36,21 +36,46 @@ clen_InitializeTrayMenu()
   Menu, tray, add, Exit, ExitMenuItem
 }
 
-clen_MenuOption(Option, Menu, Submenu, Label, Change)
+clen_CheckForFirstRun()
 {
-  local OptionValue := %Option%
+  local RunStatus := false
+
+  RegRead, RunStatus, REG_SZ, HKEY_CURRENT_USER, Software\clen
+
+  if (ErrorLevel || !RunStatus)
+  {
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen,,1
+
+    ; Fill default values for all options
+
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DynamicIsStack, 0
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular, 0
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, AutoShowContent, 1
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, CopyPasteInsert, 1
+  }
+  return
+}
+
+clen_MenuOption(ByRef OptionId, Menu, Submenu, Label, Change)
+{
+  local OptionValue
+
+  RegRead, OptionId, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, %Label%
+  OptionValue := OptionId
 
   if (Change)
   {
     if (OptionValue)
     {
-      %Option% := false
+      OptionId := false
     }
     else
     {
-      %Option% := true
+      OptionId := true
     }
-    OptionValue := %Option%
+    OptionValue := OptionId
+
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, %Label%, %OptionId%
   }
   else
   {
@@ -72,7 +97,7 @@ clen_MenuOptionStack(Change)
 {
   local Fake
 
-  clen_MenuOption("clen_DynamicIsStack", "Options", "Stack-based dynamic clipboard model`tAlt+NumpadEnd", "StackBased", Change)
+  clen_MenuOption(clen_DynamicIsStack, "Options", "Stack-based dynamic clipboard model`tAlt+NumpadEnd", "DynamicIsStack", Change)
   if (Change)
   {
      if (clen_DynamicIsStack)
@@ -91,7 +116,7 @@ clen_MenuOptionDuplicateToRegular(Change)
 {
   local Fake
 
-  clen_MenuOption("clen_ModeDuplicateToRegular", "Options", "Duplicate values to regular clipboard`tAlt+NumpadPgDn", "DuplicateToRegular", Change)
+  clen_MenuOption(clen_ModeDuplicateToRegular, "Options", "Duplicate values to regular clipboard`tAlt+NumpadPgDn", "DuplicateToRegular", Change)
   if (Change)
   {
      if (clen_ModeDuplicateToRegular)
@@ -110,7 +135,7 @@ clen_MenuOptionShowContent(Change)
 {
   local Fake
 
-  clen_MenuOption("clen_Print", "Options", "Automatically show content`tAlt+NumpadDown", "AutoShowContent", Change)
+  clen_MenuOption(clen_Print, "Options", "Automatically show content`tAlt+NumpadDown", "AutoShowContent", Change)
   if (Change)
   {
      if (clen_Print)
@@ -129,7 +154,7 @@ clen_MenuOptionCopyPaste(Change)
 {
   local Fake
 
-  clen_MenuOption("clen_CopyPasteInsert", "Options", "Copy\Paste via Ctrl+Insert\Shift+Insert`tAlt+NumpadLeft", "CopyPasteInsert", Change)
+  clen_MenuOption(clen_CopyPasteInsert, "Options", "Copy\Paste via Ctrl+Insert\Shift+Insert`tAlt+NumpadLeft", "CopyPasteInsert", Change)
   if (Change)
   {
      if (clen_CopyPasteInsert)
@@ -144,7 +169,7 @@ clen_MenuOptionCopyPaste(Change)
   return
 }
 
-StackBased:
+DynamicIsStack:
   clen_MenuOptionStack(true)
   return
 
