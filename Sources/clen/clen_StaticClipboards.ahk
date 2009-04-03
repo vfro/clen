@@ -79,14 +79,6 @@ clen_PrintStatic()
   clen_PrintStaticContent()
   return
 
-!NumpadPgDn::
-  clen_MenuOptionDuplicateToRegular(true)
-  return
-
-!NumpadDown::
-  clen_MenuOptionShowContent(true)
-  return
-
 clen_CtrlNumpad(NumpadHotkey)
 {
   local RemappedNumpadKey = SubStr(NumpadHotkey, 3)

@@ -77,14 +77,6 @@ clen_ChangeClipboard(ByRef NewValue)
   return
 }
 
-clen_ChangeCopyPasteMode()
-{
-  local Index
-
-  clen_MenuOptionCopyPaste(true)
-  return
-}
-
 clen_GetPrintableValue(ByRef ClipboardValue)
 {
   local PrintableValue
@@ -103,7 +95,3 @@ clen_GetPrintableClipboardValue()
   Transform, PrintableValue, Unicode
   return %PrintableValue%
 }
-
-!NumpadLeft::
-  clen_ChangeCopyPasteMode()
-  return

@@ -119,10 +119,6 @@ clen_DynamicPrintAll()
   clen_DynamicPrintAll()
   return
 
-!NumpadEnd::
-  clen_MenuOptionStack(true)
-  return
-
 ^NumpadIns::
   clen_DynamicCopy()
   return

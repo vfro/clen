@@ -23,9 +23,9 @@ clen_InitializeTrayMenu()
   Menu, tray, add, Options, :Options
 
   Menu, tray, add
-  Menu, tray, add, Save options and clipboards`tAlt+NumpadEnter, SaveOptions
-  Menu, tray, add, Load options and clipboards`tAlt+NumpadIns, LoadOptions
-  Menu, tray, add, Restore default options and clear clipboards`tAlt+NumpadDel, RestoreOptions
+  Menu, tray, add, Save dynamic and static clipboards`tAlt+NumpadEnter, SaveOptions
+  Menu, tray, add, Load dynamic and static clipboards`tAlt+NumpadIns, LoadOptions
+  Menu, tray, add, Clear all clipboards`tAlt+NumpadDel, RestoreOptions
 
   Menu, tray, add
   Menu, tray, add, Show static clipboards content`tAlt+NumpadDiv, StaticContent
@@ -97,7 +97,7 @@ clen_MenuOptionStack(Change)
 {
   local Fake
 
-  clen_MenuOption(clen_DynamicIsStack, "Options", "Stack-based dynamic clipboard model`tAlt+NumpadEnd", "DynamicIsStack", Change)
+  clen_MenuOption(clen_DynamicIsStack, "Options", "Stack-based dynamic clipboard model", "DynamicIsStack", Change)
   if (Change)
   {
      if (clen_DynamicIsStack)
@@ -116,7 +116,7 @@ clen_MenuOptionDuplicateToRegular(Change)
 {
   local Fake
 
-  clen_MenuOption(clen_ModeDuplicateToRegular, "Options", "Duplicate values to regular clipboard`tAlt+NumpadPgDn", "DuplicateToRegular", Change)
+  clen_MenuOption(clen_ModeDuplicateToRegular, "Options", "Duplicate values to regular clipboard", "DuplicateToRegular", Change)
   if (Change)
   {
      if (clen_ModeDuplicateToRegular)
@@ -135,7 +135,7 @@ clen_MenuOptionShowContent(Change)
 {
   local Fake
 
-  clen_MenuOption(clen_Print, "Options", "Automatically show content`tAlt+NumpadDown", "AutoShowContent", Change)
+  clen_MenuOption(clen_Print, "Options", "Automatically show content", "AutoShowContent", Change)
   if (Change)
   {
      if (clen_Print)
@@ -154,7 +154,7 @@ clen_MenuOptionCopyPaste(Change)
 {
   local Fake
 
-  clen_MenuOption(clen_CopyPasteInsert, "Options", "Copy\Paste via Ctrl+Insert\Shift+Insert`tAlt+NumpadLeft", "CopyPasteInsert", Change)
+  clen_MenuOption(clen_CopyPasteInsert, "Options", "Copy\Paste via Ctrl+Insert\Shift+Insert", "CopyPasteInsert", Change)
   if (Change)
   {
      if (clen_CopyPasteInsert)
