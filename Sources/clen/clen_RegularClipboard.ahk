@@ -160,6 +160,6 @@ OnClipboardChange:
   clen_RegularRedo()
   return
 
-!Insert::
++^Insert::
   clen_RegularPasteWithoutFormating()
   return
