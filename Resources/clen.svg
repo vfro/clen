@@ -14,13 +14,18 @@
          }
 
          .basis {
-            stroke:url(#basis_stroke);
-            fill:url(#basis_fill);
+            stroke:url(#basis-stroke);
+            fill:url(#basis-fill);
          }
 
          .holder {
-            stroke:url(#holder_stroke);
-            fill:url(#holder_fill);
+            stroke:url(#holder-stroke);
+            fill:url(#holder-fill);
+         }
+
+         #blue-paper {
+            stroke:url(#blue-paper-stroke);
+            fill:url(#blue-paper-fill);
          }
 
       ]]>
@@ -28,39 +33,62 @@
 
    <svg:defs>
 
-      <svg:linearGradient id="basis_stroke" x1="0%" y1="0%" x2="20%" y2="100%">
+      <svg:linearGradient id="basis-stroke" x1="0%" y1="0%" x2="20%" y2="100%">
          <svg:stop offset="0%" style="stop-color:#CD7F32; stop-opacity:1"/>
          <svg:stop offset="100%" style="stop-color:#964B00; stop-opacity:1"/>
       </svg:linearGradient>
 
-      <svg:linearGradient id="basis_fill" x1="0%" y1="0%" x2="20%" y2="100%">
+      <svg:linearGradient id="basis-fill" x1="0%" y1="0%" x2="20%" y2="100%">
          <svg:stop offset="0%" style="stop-color:#F2E2AD; stop-opacity:1"/>
          <svg:stop offset="100%" style="stop-color:#DCAD77; stop-opacity:1"/>
       </svg:linearGradient>
 
-      <svg:linearGradient id="holder_stroke" x1="0%" y1="0%" x2="20%" y2="100%">
-         <svg:stop offset="0%" style="stop-color:#97621F; stop-opacity:1"/>
-         <svg:stop offset="100%" style="stop-color:#DB9440; stop-opacity:1"/>
+      <svg:radialGradient id="holder-stroke" cx="50%" cy="50%" r="70%">
+         <svg:stop offset="0%" style="stop-color:#946F00; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#CD7F32; stop-opacity:1"/>
+      </svg:radialGradient>
+
+      <svg:radialGradient id="holder-fill" cx="50%" cy="50%" r="70%">
+         <svg:stop offset="0%" style="stop-color:#DCAD77; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#F0D474; stop-opacity:1"/>
+      </svg:radialGradient>
+
+      <svg:linearGradient id="blue-paper-stroke" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:#94D7FE; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#83AED9; stop-opacity:1"/>
       </svg:linearGradient>
 
-      <svg:linearGradient id="holder_fill" x1="0%" y1="0%" x2="20%" y2="100%">
-         <svg:stop offset="0%" style="stop-color:#FEEFB5; stop-opacity:1"/>
-         <svg:stop offset="100%" style="stop-color:#F3DB7F; stop-opacity:1"/>
+      <svg:linearGradient id="blue-paper-fill" x1="100%" y1="0%" x2="0%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:#C3E2FA; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#D9E9FF; stop-opacity:1"/>
       </svg:linearGradient>
+
+      <svg:g id="paper-template">
+
+         <svg:path d="M 0 0 l 6 0 l 2 2 l 0 7 l -8 0 z" />
+
+      </svg:g>
+
+      <svg:g id="clen-template">
+
+         <svg:path class="basis"
+                   d="M 2 2 l 8 0 q 1 0, 1 1 l 0 9 q 0 1, -1 1 l -8 0 q -1 0, -1 -1 l 0 -9 q 0 -1, 1 -1 z" />
+
+         <svg:use id="blue-paper" xlink:href="#paper-template" transform="translate(5.5, 5)" />
+
+         <svg:path class="holder"
+                   d="M 4.5 0.5 l 3 0 c 1 0, 2 3, 0 3 l -3 0 c -2 0, -1 -3, 0 -3 z" />
+
+      </svg:g>
 
    </svg:defs>
 
-   <svg:g transform="translate(100, 100) scale(5.1)" >
-
-      <svg:path class="basis"
-                d="M 3 2 l 8 0 q 1 0, 1 1 l 0 10 q 0 1, -1 1 l -8 0 q -1 0, -1 -1 l 0 -10 q 0 -1, 1 -1 z" />
-
-      <svg:path class="holder"
-                d="M 5.5 0.5 l 3 0 c 1 0, 2 3, 0 3 l -3 0 c -2 0, -1 -3, 0 -3 z" />
-
-   </svg:g>
-
    <!-- Tray icon size marker -->
-   <svg:rect x="99" y="99" width="17" height="17" style="fill:none;stroke:black;stroke-width:1;" shape-rendering="crispEdges" />
+   <svg:rect x="99" y="99"  width="17" height="17" style="fill:lightgray; stroke:black; stroke-width:1" shape-rendering="crispEdges" />
+   <svg:rect x="99" y="149" width="49" height="49" style="fill:white; stroke:black; stroke-width:1" shape-rendering="crispEdges" />
+
+   <svg:use id="clen-icon" xlink:href="#clen-template" transform="translate(100, 100) scale(1.1)" />
+   <svg:use id="clen-logo" xlink:href="#clen-template" transform="translate(100, 150) scale(3.3)" />
+
 
 </svg:svg>
