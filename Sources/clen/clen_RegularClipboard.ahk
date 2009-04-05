@@ -27,6 +27,7 @@ clen_RegularClipboardChaged()
     return
   }
 
+  clen_RegularIndex := clen_RegularMaxRedo
   clen_RegularClip%clen_RegularIndex% := ClipboardAll
   clen_RegularClipInfo%clen_RegularIndex% := A_EventInfo
 
