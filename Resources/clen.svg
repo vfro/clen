@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg:svg width="1000" height="600"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+
+   <svg:style type="text/css">
+      <![CDATA[
+         * {
+            stroke-linecap:round;
+            stroke-linecap:round;
+            stroke-width:1;
+         }
+
+         .basis {
+            stroke:url(#basis_stroke);
+            fill:url(#basis_fill);
+         }
+
+         .holder {
+            stroke:url(#holder_stroke);
+            fill:url(#holder_fill);
+         }
+
+      ]]>
+   </svg:style>
+
+   <svg:defs>
+
+      <svg:linearGradient id="basis_stroke" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:#CD7F32; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#964B00; stop-opacity:1"/>
+      </svg:linearGradient>
+
+      <svg:linearGradient id="basis_fill" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:#F2E2AD; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#DCAD77; stop-opacity:1"/>
+      </svg:linearGradient>
+
+      <svg:linearGradient id="holder_stroke" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:#97621F; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#DB9440; stop-opacity:1"/>
+      </svg:linearGradient>
+
+      <svg:linearGradient id="holder_fill" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:#FEEFB5; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:#F3DB7F; stop-opacity:1"/>
+      </svg:linearGradient>
+
+   </svg:defs>
+
+   <svg:g transform="translate(100, 100) scale(5.1)" >
+
+      <svg:path class="basis"
+                d="M 3 2 l 8 0 q 1 0, 1 1 l 0 10 q 0 1, -1 1 l -8 0 q -1 0, -1 -1 l 0 -10 q 0 -1, 1 -1 z" />
+
+      <svg:path class="holder"
+                d="M 5.5 0.5 l 3 0 c 1 0, 2 3, 0 3 l -3 0 c -2 0, -1 -3, 0 -3 z" />
+
+   </svg:g>
+
+   <!-- Tray icon size marker -->
+   <svg:rect x="99" y="99" width="17" height="17" style="fill:none;stroke:black;stroke-width:1;" shape-rendering="crispEdges" />
+
+</svg:svg>
