@@ -28,6 +28,12 @@
             fill:url(#blue-paper-fill);
          }
 
+         .paper-shadow {
+            stroke-width:0.8;
+            stroke:url(#blue-paper-shadow-stroke);
+            fill:url(#blue-paper-shadow-fill);
+         }
+
       ]]>
    </svg:style>
 
@@ -59,13 +65,27 @@
       </svg:linearGradient>
 
       <svg:linearGradient id="blue-paper-fill" x1="100%" y1="0%" x2="0%" y2="100%">
-         <svg:stop offset="0%" style="stop-color:#C3E2FA; stop-opacity:1"/>
+         <svg:stop offset="0%" style="stop-color:#87BAEA; stop-opacity:1"/>
+         <!-- svg:stop offset="30%" style="stop-color:#C3E2FA; stop-opacity:1"/ -->
          <svg:stop offset="100%" style="stop-color:#D9E9FF; stop-opacity:1"/>
+      </svg:linearGradient>
+
+      <svg:linearGradient id="blue-paper-shadow-stroke" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:white; stop-opacity:1"/>
+         <svg:stop offset="100%" style="stop-color:white; stop-opacity:1"/>
+      </svg:linearGradient>
+
+      <svg:linearGradient id="blue-paper-shadow-fill" x1="0%" y1="0%" x2="20%" y2="100%">
+         <svg:stop offset="0%" style="stop-color:white; stop-opacity:0"/>
+         <svg:stop offset="100%" style="stop-color:white; stop-opacity:0.1"/>
       </svg:linearGradient>
 
       <svg:g id="paper-template">
 
          <svg:path d="M 0 0 l 6 0 l 2 2 l 0 7 l -8 0 z" />
+
+         <svg:path class="paper-shadow"
+                   d="M 0.5 0.5 l 5 0 l 0 2 l 2 0 l 0 6 l -7 0 z" />
 
       </svg:g>
 
@@ -84,7 +104,7 @@
    </svg:defs>
 
    <!-- Tray icon size marker -->
-   <svg:rect x="99" y="99"  width="17" height="17" style="fill:lightgray; stroke:black; stroke-width:1" shape-rendering="crispEdges" />
+   <svg:rect x="99" y="99"  width="17" height="17" style="fill:white; stroke:black; stroke-width:1" shape-rendering="crispEdges" />
    <svg:rect x="99" y="149" width="49" height="49" style="fill:white; stroke:black; stroke-width:1" shape-rendering="crispEdges" />
 
    <svg:use id="clen-icon" xlink:href="#clen-template" transform="translate(100, 100) scale(1.1)" />

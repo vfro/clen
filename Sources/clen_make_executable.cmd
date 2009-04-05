@@ -23,5 +23,5 @@ type clen\clen_PasswordClipboard.ahk >> clen.ahk
 type clen\clen_SaveLoad.ahk >> clen.ahk
 type clen\clen_TrayMenu.ahk >> clen.ahk
 
-Ahk2Exe.exe /in clen.ahk /icon clen.ico /out clipboard_enhanced.exe /NoDecompile
+Ahk2Exe.exe /in clen.ahk /icon ../Resources/clen.ico /out clipboard_enhanced.exe /NoDecompile
 start clipboard_enhanced.exe
