@@ -47,6 +47,8 @@ clen_RegularClipboardChaged()
     return
   }
 
+  clen_ControlMenu()
+
   if (clen_RegularFirstCall)
   {
     clen_RegularFirstCall := false
@@ -64,6 +66,31 @@ clen_RegularClipboardChaged()
     {
       TrayTip, clen : Regular,<binary data>, 10, 1
     }
+  }
+
+  return
+}
+
+clen_ControlMenu()
+{
+  local Fake
+
+  if (clen_RegularMaxRedo > clen_RegularIndex)
+  {
+    clen_MenuRegularRedoEnable(true)
+  }
+  else
+  {
+    clen_MenuRegularRedoEnable(false)
+  }
+
+  if (clen_RegularIndex >= 2)
+  {
+    clen_MenuRegularUndoEnable(true)
+  }
+  else
+  {
+    clen_MenuRegularUndoEnable(false)
   }
   return
 }
@@ -103,6 +130,8 @@ clen_RegularUndo()
   {
     TrayTip,
   }
+
+  clen_ControlMenu()
   return
 }
 
@@ -134,6 +163,8 @@ clen_RegularRedo()
   {
     TrayTip,
   }
+
+  clen_ControlMenu()
   return
 }
 

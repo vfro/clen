@@ -24,17 +24,51 @@ clen_InitializeTrayMenu()
   clen_AutorunMenuOption(false)
 
   Menu, tray, add
-  Menu, tray, add, Save dynamic and static clipboards`tAlt+NumpadEnter, SaveOptions
-  Menu, tray, add, Load dynamic and static clipboards`tAlt+NumpadIns, LoadOptions
-  Menu, tray, add, Clear all clipboards`tAlt+NumpadDel, RestoreOptions
+  Menu, tray, add, Save dynamic and static clipboards`tAlt+Numpad Enter, SaveOptions
+  Menu, tray, add, Load dynamic and static clipboards`tAlt+Numpad Ins, LoadOptions
+  Menu, tray, add, Clear all clipboards`tAlt+Numpad Del, RestoreOptions
 
   Menu, tray, add
-  Menu, tray, add, Show static clipboards content`tAlt+NumpadDiv, StaticContent
-  Menu, tray, add, Show dynamic clipboard content`tAlt+NumpadMult, DynamicContent
+  Menu, tray, add, Show static clipboards content`tAlt+Numpad Div, StaticContent
+  Menu, tray, add, Show dynamic clipboard content`tAlt+Numpad Mult, DynamicContent
+
+  Menu, RegularClipboard, add, Previous value`tCtrl+Numpad Sub, RegularClipboardUndo
+  Menu, RegularClipboard, add, Next value`tCtrl+Numpad Add, RegularClipboardRedo
+  Menu, tray, add, Regular Clipboard, :RegularClipboard
 
   Menu, tray, add
   Menu, tray, add, About, AboutMenuItem
   Menu, tray, add, Exit, ExitMenuItem
+
+  clen_MenuRegularUndoEnable(false)
+  clen_MenuRegularRedoEnable(false)
+  return
+}
+
+clen_MenuRegularUndoEnable(Enabled)
+{
+  if (Enabled)
+  {
+    Menu, RegularClipboard, Enable, Previous value`tCtrl+Numpad Sub
+  }
+  else
+  {
+    Menu, RegularClipboard, Disable, Previous value`tCtrl+Numpad Sub
+  }
+  return
+}
+
+clen_MenuRegularRedoEnable(Enabled)
+{
+  if (Enabled)
+  {
+    Menu, RegularClipboard, Enable, Next value`tCtrl+Numpad Add
+  }
+  else
+  {
+    Menu, RegularClipboard, Disable, Next value`tCtrl+Numpad Add
+  }
+  return
 }
 
 clen_CheckForFirstRun()
@@ -253,6 +287,14 @@ StaticContent:
 
 DynamicContent:
   clen_DynamicPrintAll()
+  return
+
+RegularClipboardUndo:
+  clen_RegularUndo()
+  return
+
+RegularClipboardRedo:
+  clen_RegularRedo()
   return
 
 SaveOptions:
