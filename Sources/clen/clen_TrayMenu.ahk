@@ -38,6 +38,8 @@ clen_InitializeTrayMenu()
 
   Menu, tray, add
   Menu, tray, add, About, AboutMenuItem
+  Menu, tray, add, Show hotkey tips, HelpOnHotkeys
+  Menu, tray, add
   Menu, tray, add, Exit, ExitMenuItem
 
   clen_MenuRegularUndoEnable(false)
@@ -261,6 +263,57 @@ clen_MenuOptionCopyPaste(Change)
   return
 }
 
+clen_ShowHelpOnHotkeys()
+{
+  Gui, Destroy
+
+  Gui, Add, Text, x10 y10, Dynamic clipboard hotkeys:
+  Gui, Add, ListView, w500 r4 Grid ReadOnly -Hdr,Hotkey|Description
+
+  LV_Add("", "Ctrl + Numpad Insert", "Insert new value into the top of the dynamic clipboard")
+  LV_Add("", "Shift + Numpad Insert", "Paste a value from the bottom of the dynamic clipboard")
+  LV_Add("", "Shift + Numpad Delete", "Paste a value from the top of the dynamic clipboard")
+  LV_Add("", "Alt + Numpad Mult", "Display content of the dynamic clipboard")
+
+  LV_ModifyCol(1, "200")
+  LV_ModifyCol(2, "295")
+
+  Gui, Add, Text,, Static clipboards hotkeys:
+  Gui, Add, ListView, w500 r3 Grid ReadOnly -Hdr,Hotkey|Description
+
+  LV_Add("", "Ctrl + Numpad Number (from 1 to 9)", "Insert new value into one of the static clipboard")
+  LV_Add("", "Shift + Numpad Number (from 1 to 9)", "Paste value into one of the static clipboard")
+  LV_Add("", "Alt + Numpad Div", "Display content of static clipboards")
+
+  LV_ModifyCol(1, "200")
+  LV_ModifyCol(2, "295")
+
+  Gui, Add, Text,, Password clipboard hotkeys:
+  Gui, Add, ListView, w500 r3 Grid ReadOnly -Hdr,Hotkey|Description
+
+  LV_Add("", "Ctrl + Numpad Mult", "Copy value into password clipboard")
+  LV_Add("", "Shift + Numpad Mult", "Paste value and clear password clipboard")
+  LV_Add("", "Ctrl + Shift + Numpad Mult", "Wait for password. Intercept value from regular clipboard")
+
+  LV_ModifyCol(1, "200")
+  LV_ModifyCol(2, "295")
+
+  Gui, Add, Text,, Regular clipboard hotkeys:
+  Gui, Add, ListView, w500 r2 Grid ReadOnly -Hdr,Hotkey|Description
+
+  LV_Add("", "Ctrl + Numpad Sub", "Previous value in a history")
+  LV_Add("", "Ctrl + Numpad Add", "Next value in a history")
+
+  LV_ModifyCol(1, "200")
+  LV_ModifyCol(2, "295")
+
+  Gui, Add, Text, w500 Center, Please, note that those hotkeys works only with numlock turned off.
+  Gui, Add, Button, x210 w80 Default gButtonOk, Ok
+
+  Gui, Show, AutoSize Center, Clipborad Enhanced Hotkeys
+  return
+}
+
 ClenAutorun:
   clen_AutorunMenuOption(true)
   return
@@ -311,6 +364,18 @@ RestoreOptions:
 
 AboutMenuItem:
   Run, http://code.google.com/p/clen/
+  return
+
+HelpOnHotkeys:
+  clen_ShowHelpOnHotkeys()
+  return
+
+ButtonOk:
+  Gui, Destroy
+  return
+
+GuiClose:
+  Gui, Destroy
   return
 
 ExitMenuItem:
