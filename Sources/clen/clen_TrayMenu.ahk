@@ -279,10 +279,11 @@ clen_ShowHelpOnHotkeys()
   LV_ModifyCol(2, "295")
 
   Gui, Add, Text,, Static clipboards hotkeys:
-  Gui, Add, ListView, w500 r3 Grid ReadOnly -Hdr,Hotkey|Description
+  Gui, Add, ListView, w500 r4 Grid ReadOnly -Hdr,Hotkey|Description
 
   LV_Add("", "Ctrl + Numpad Number (from 1 to 9)", "Insert new value into one of the static clipboard")
   LV_Add("", "Shift + Numpad Number (from 1 to 9)", "Paste value into one of the static clipboard")
+  LV_Add("", "Ctrl + Shift + Numpad Number", "Can be used istead of Ctrl + Numpad Number")
   LV_Add("", "Alt + Numpad Div", "Display content of static clipboards")
 
   LV_ModifyCol(1, "200")
