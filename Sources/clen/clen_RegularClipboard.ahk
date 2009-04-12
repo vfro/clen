@@ -60,11 +60,11 @@ clen_RegularClipboardChaged()
     if (A_EventInfo == 1)
     {
       PrintableClipboard := clen_GetPrintableClipboardValue()
-      TrayTip, clen : Regular,%PrintableClipboard%, 10, 1
+      TrayTip, clen : Regular,%PrintableClipboard%, 10, 1, 16
     }
     else
     {
-      TrayTip, clen : Regular,<binary data>, 10, 1
+      TrayTip, clen : Regular,<binary data>, 10, 1, 16
     }
   }
 
@@ -113,11 +113,11 @@ clen_RegularUndo()
         if (clen_RegularClipInfo%Index% == 1)
         {
           PrintableClipboard := clen_GetPrintableClipboardValue()
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1, 16
         }
         else
         {
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1, 16
         }
       }
     }
@@ -150,11 +150,11 @@ clen_RegularRedo()
         if (clen_RegularClipInfo%Index% == 1)
         {
           PrintableClipboard := clen_GetPrintableClipboardValue()
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1, 16
         }
         else
         {
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1
+          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1, 16
         }
     }
 

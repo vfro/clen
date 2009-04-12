@@ -45,7 +45,7 @@ clen_LoadSettings()
   }
   clen_DynamicIndexEnd += 1
 
-  TrayTip, clen : Static & Dynamic, Dynamic and static clipboards were loaded, 10, 1
+  TrayTip, clen : Static & Dynamic, Dynamic and static clipboards were loaded, 10, 1, 16
   return
 }
 
@@ -78,7 +78,7 @@ clen_SaveSettings()
 
   clen_ChangeClipboard(ClipboardOld)
 
-  TrayTip, clen : Static & Dynamic, Dynamic and static clipboards were saved, 10, 1
+  TrayTip, clen : Static & Dynamic, Dynamic and static clipboards were saved, 10, 1, 16
   return
 }
 

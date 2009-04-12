@@ -196,11 +196,11 @@ clen_MenuOptionStack(Change)
   {
      if (clen_DynamicIsStack)
      {
-        TrayTip, clen : Dynamic, Dynamic clipboard model is switched to STACK, 10, 1
+        TrayTip, clen : Dynamic, Dynamic clipboard model is switched to STACK, 10, 1, 16
      }
      else
      {
-        TrayTip, clen : Dynamic, Dynamic clipboard model is switched to QUEUE, 10, 1
+        TrayTip, clen : Dynamic, Dynamic clipboard model is switched to QUEUE, 10, 1, 16
      }
   }
   return
@@ -215,11 +215,11 @@ clen_MenuOptionDuplicateToRegular(Change)
   {
      if (clen_ModeDuplicateToRegular)
      {
-        TrayTip, clen : Static & Dynamic, Duplicate to regular clipboard is turned ON, 10, 1
+        TrayTip, clen : Static & Dynamic, Duplicate to regular clipboard is turned ON, 10, 1, 16
      }
      else
      {
-        TrayTip, clen : Static & Dynamic, Duplicate to regular clipboard is turned OFF, 10, 1
+        TrayTip, clen : Static & Dynamic, Duplicate to regular clipboard is turned OFF, 10, 1, 16
      }
   }
   return
@@ -234,11 +234,11 @@ clen_MenuOptionShowContent(Change)
   {
      if (clen_Print)
      {
-        TrayTip, clen : Static & Dynamic, Show keyboard content is turned ON, 10, 1
+        TrayTip, clen : Static & Dynamic, Show keyboard content is turned ON, 10, 1, 16
      }
      else
      {
-        TrayTip, clen : Static & Dynamic, Show keyboard content is turned OFF, 10, 1
+        TrayTip, clen : Static & Dynamic, Show keyboard content is turned OFF, 10, 1, 16
      }
   }
   return
@@ -253,11 +253,11 @@ clen_MenuOptionCopyPaste(Change)
   {
      if (clen_CopyPasteInsert)
      {
-       TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+Insert\Shift+Insert, 10, 1
+       TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+Insert\Shift+Insert, 10, 1, 16
      }
      else
      {
-       TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+C\Ctrl+V, 10, 1
+       TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+C\Ctrl+V, 10, 1, 16
      }
   }
   return

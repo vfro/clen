@@ -112,7 +112,7 @@ clen_DynamicPrintAll()
      Type := "STACK"
   }
 
-  TrayTip, clen : Dynamic %Type%, %Content%, 10, 1
+  TrayTip, clen : Dynamic %Type%, %Content%, 10, 1, 16
 }
 
 !NumpadMult::

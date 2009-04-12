@@ -20,7 +20,7 @@ clen_PasswordClipboardShow(Size)
       ClipboardShow .= "*"
     }
 
-    TrayTip, clen : Password,Password: %ClipboardShow%, 30, 1
+    TrayTip, clen : Password,Password: %ClipboardShow%, 30, 1, 16
   }
   return
 }
@@ -86,7 +86,7 @@ clen_PasswordClipboardPaste()
 
   if (clen_Print)
   {
-    TrayTip, clen : Password,Password Clipboard is empty, 10, 1
+    TrayTip, clen : Password,Password Clipboard is empty, 10, 1, 16
   }
   return
 }
@@ -100,7 +100,7 @@ clen_PasswordClipboardWaitForCopy()
 
   if (clen_Print)
   {
-    TrayTip, clen : Password,Waiting for password, 10, 1
+    TrayTip, clen : Password,Waiting for password, 10, 1, 16
   }
   return
 }

@@ -61,7 +61,7 @@ clen_PrintStaticContent()
      clipAll .= clen_GetClipPrintableData(A_Index)
   }
   clipAll .= clen_GetClipPrintableData(0)
-  TrayTip, clen : Static, %clipAll%, 10, 1
+  TrayTip, clen : Static, %clipAll%, 10, 1, 16
   return
 }
 
