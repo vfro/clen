@@ -11,7 +11,7 @@
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v0.7.1 © 2008-2009 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v1.0 © 2008-2009 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
@@ -364,7 +364,7 @@ RestoreOptions:
   return
 
 AboutMenuItem:
-  Run, http://code.google.com/p/clen/
+  Run, http://code.google.com/p/clen/wiki/About
   return
 
 HelpOnHotkeys:
