@@ -11,7 +11,7 @@ rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 rem See the License for the specific language governing permissions and
 rem limitations under the License.
 
-taskkill /IM clipboard_enhanced.exe > nul 2>&1
+taskkill /IM clipboard_enhanced-v1.1.exe > nul 2>&1
 
 type clen\clen_Initialize.ahk > clen.ahk
 type clen\clen_Numpad.ahk >> clen.ahk
@@ -23,5 +23,5 @@ type clen\clen_PasswordClipboard.ahk >> clen.ahk
 type clen\clen_SaveLoad.ahk >> clen.ahk
 type clen\clen_TrayMenu.ahk >> clen.ahk
 
-Ahk2Exe.exe /in clen.ahk /icon ../Resources/clen.ico /out clipboard_enhanced.exe /NoDecompile
-start clipboard_enhanced.exe
+Ahk2Exe.exe /in clen.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v1.1.exe /NoDecompile
+start clipboard_enhanced-v1.1.exe

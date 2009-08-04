@@ -113,6 +113,31 @@ clen_DynamicPrintAll()
   }
 
   TrayTip, clen : Dynamic %Type%, %Content%, 10, 1, 16
+  return
+}
+
+clen_PasteList(ReverseMode)
+{
+  local ClipboardOld := ClipboardAll
+  local Separator := ClipboardAll
+
+  while (clen_DynamicIndexBegin < clen_DynamicIndexEnd)
+  {
+    clen_DynamicPaste(ReverseMode)
+    if (clen_DynamicIndexBegin < clen_DynamicIndexEnd)
+    {
+      clen_ChangeClipboard(Separator)
+      clen_Paste()
+    }
+  }
+
+  clen_ChangeClipboard(ClipboardOld)
+
+  if(clen_Print)
+  {
+     TrayTip, , , 10, 1, 16
+  }
+  return
 }
 
 !NumpadMult::
@@ -126,4 +151,9 @@ clen_DynamicPrintAll()
 +NumpadIns::
 +NumpadDel::
   clen_DynamicPaste(clen_RecognizeNumpadHotkey(A_ThisHotkey))
+  return
+
+^+NumpadIns::
+^+NumpadDel::
+  clen_PasteList(clen_RecognizeNumpadHotkey(A_ThisHotkey))
   return

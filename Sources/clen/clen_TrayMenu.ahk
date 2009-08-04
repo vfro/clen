@@ -11,7 +11,7 @@
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v1.0 © 2008-2009 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v1.1 © 2008-2009 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
@@ -304,6 +304,13 @@ clen_ShowHelpOnHotkeys()
 
   LV_Add("", "Ctrl + Numpad Sub", "Previous value in a history")
   LV_Add("", "Ctrl + Numpad Add", "Next value in a history")
+
+  Gui, Add, Text,, Additional tips:
+  Gui, Add, ListView, w500 r3 Grid ReadOnly -Hdr,Hotkey|Description
+
+  LV_Add("", "Copy separator into regular clipboard", "and press ...")
+  LV_Add("", "Ctrl + Shift + Numpad Insert", "Paste list from dynamic clipboard")
+  LV_Add("", "Ctrl + Shift + Numpad Delete", "Paste reversed list from dynamic clipboard")
 
   LV_ModifyCol(1, "200")
   LV_ModifyCol(2, "295")
