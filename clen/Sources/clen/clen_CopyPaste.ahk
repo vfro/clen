@@ -83,7 +83,7 @@ clen_GetPrintableValue(ByRef ClipboardValue)
   local ClipboardOld := ClipboardAll
 
   clen_ChangeClipboard(ClipboardValue)
-  Transform, PrintableValue, Unicode
+  PrintableValue := Clipboard
   clen_ChangeClipboard(ClipboardOld)
 
   return %PrintableValue%
@@ -91,7 +91,5 @@ clen_GetPrintableValue(ByRef ClipboardValue)
 
 clen_GetPrintableClipboardValue()
 {
-  local PrintableValue
-  Transform, PrintableValue, Unicode
-  return %PrintableValue%
+  return Clipboard
 }
