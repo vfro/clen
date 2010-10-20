@@ -86,7 +86,7 @@ clen_GetPrintableValue(ByRef ClipboardValue)
   PrintableValue := Clipboard
   clen_ChangeClipboard(ClipboardOld)
 
-  return %PrintableValue%
+  return PrintableValue
 }
 
 clen_GetPrintableClipboardValue()
