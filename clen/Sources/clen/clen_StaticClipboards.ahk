@@ -46,7 +46,7 @@ clen_GetClipPrintableData(ClipIndex)
   ClipData := clen_GetPrintableValue(clen_ClipBoard%ClipIndex%)
   if ClipData is not space
   {
-    Result = %ClipIndex% -> %ClipData%`n
+    Result = %ClipIndex%: %ClipData%`n
   }
 
   return %Result%
