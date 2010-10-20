@@ -1,4 +1,4 @@
-; Copyright 2008-2009 Volodymyr Frolov
+; Copyright 2008-2010 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -11,7 +11,7 @@
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v1.1 © 2008-2009 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v2.0 © 2008-2010 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
