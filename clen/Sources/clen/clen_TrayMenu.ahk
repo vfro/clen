@@ -118,6 +118,10 @@ clen_AutorunMenuOption(Change)
   else
   {
     OptionValue := true
+    if OptionString <> %A_ScriptFullPath%
+    {
+      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+    }
   }
 
   if (Change)
