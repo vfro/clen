@@ -9,7 +9,6 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-
 clen_InsertWithoutFormat()
 {
   local ClipboardOld := ClipboardAll
@@ -21,6 +20,40 @@ clen_InsertWithoutFormat()
   return
 }
 
+clen_InsertUpper()
+{
+  local ClipboardOld := ClipboardAll
+  local UpperClipboard =
+  StringUpper, UpperClipboard, Clipboard
+
+  clen_ChangeClipboard(UpperClipboard)
+  clen_Paste()
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
+clen_InsertLower()
+{
+  local ClipboardOld := ClipboardAll
+  local LowerClipboard =
+  StringLower, LowerClipboard, Clipboard
+
+  clen_ChangeClipboard(LowerClipboard)
+  clen_Paste()
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
 #Insert::
   clen_InsertWithoutFormat()
+  return
+
+#Up::
+  clen_InsertUpper()
+  return
+
+#Down::
+  clen_InsertLower()
   return
