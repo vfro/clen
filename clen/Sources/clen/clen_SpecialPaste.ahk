@@ -1,7 +1,3 @@
-;
-; Clipboard Enhanced v2.0
-;
-
 ; Copyright 2008-2010 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
@@ -13,13 +9,18 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-#include clen\clen_Initialize.ahk
-#include clen\clen_Numpad.ahk
-#include clen\clen_CopyPaste.ahk
-#include clen\clen_DynamicClipboards.ahk
-#include clen\clen_StaticClipboards.ahk
-#include clen\clen_RegularClipboard.ahk
-#include clen\clen_PasswordClipboard.ahk
-#include clen\clen_SpecialPaste.ahk
-#include clen\clen_SaveLoad.ahk
-#include clen\clen_TrayMenu.ahk
+
+clen_InsertWithoutFormat()
+{
+  local ClipboardOld := ClipboardAll
+
+  clen_ChangeClipboard(Clipboard)
+  clen_Paste()
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
+#Insert::
+  clen_InsertWithoutFormat()
+  return

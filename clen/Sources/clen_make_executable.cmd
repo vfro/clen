@@ -20,6 +20,7 @@ type clen\clen_DynamicClipboards.ahk >> clen-all.ahk
 type clen\clen_StaticClipboards.ahk >> clen-all.ahk
 type clen\clen_RegularClipboard.ahk >> clen-all.ahk
 type clen\clen_PasswordClipboard.ahk >> clen-all.ahk
+type clen\clen_SpecialPaste.ahk >> clen-all.ahk
 type clen\clen_SaveLoad.ahk >> clen-all.ahk
 type clen\clen_TrayMenu.ahk >> clen-all.ahk
 
