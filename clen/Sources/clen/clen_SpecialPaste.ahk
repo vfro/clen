@@ -23,8 +23,8 @@ clen_InsertWithoutFormat()
 clen_InsertUpper()
 {
   local ClipboardOld := ClipboardAll
-  local UpperClipboard =
-  StringUpper, UpperClipboard, Clipboard
+  local UpperClipboard := Clipboard
+  StringUpper, UpperClipboard, UpperClipboard
 
   clen_ChangeClipboard(UpperClipboard)
   clen_Paste()
@@ -36,8 +36,8 @@ clen_InsertUpper()
 clen_InsertLower()
 {
   local ClipboardOld := ClipboardAll
-  local LowerClipboard =
-  StringLower, LowerClipboard, Clipboard
+  local LowerClipboard := Clipboard
+  StringLower, LowerClipboard, LowerClipboard
 
   clen_ChangeClipboard(LowerClipboard)
   clen_Paste()
@@ -50,10 +50,10 @@ clen_InsertLower()
   clen_InsertWithoutFormat()
   return
 
-#Up::
+#PgUp::
   clen_InsertUpper()
   return
 
-#Down::
+#PgDn::
   clen_InsertLower()
   return

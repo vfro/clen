@@ -11,7 +11,7 @@
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v2.0`n © 2008-2010 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v2.0.1`n © 2008-2010 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
@@ -304,10 +304,16 @@ clen_ShowHelpOnHotkeys()
   LV_ModifyCol(2, "295")
 
   Gui, Add, Text,, Regular clipboard hotkeys:
-  Gui, Add, ListView, w500 r2 Grid ReadOnly -Hdr,Hotkey|Description
+  Gui, Add, ListView, w500 r5 Grid ReadOnly -Hdr,Hotkey|Description
 
   LV_Add("", "Ctrl + Numpad Sub", "Previous value in a history")
   LV_Add("", "Ctrl + Numpad Add", "Next value in a history")
+  LV_Add("", "Win Key + Insert", "Paste without format")
+  LV_Add("", "Win Key + Page Up", "Paste in uppercase")
+  LV_Add("", "Win Key + Page Down", "Paste in lowercase")
+
+  LV_ModifyCol(1, "200")
+  LV_ModifyCol(2, "295")
 
   Gui, Add, Text,, Additional tips:
   Gui, Add, ListView, w500 r3 Grid ReadOnly -Hdr,Hotkey|Description
