@@ -20,6 +20,17 @@ clen_InsertWithoutFormat()
   return
 }
 
+clen_DirectInsert()
+{
+  local ClipboardOld := ClipboardAll
+
+  clen_ChangeClipboard(Clipboard)
+  SendInput {Raw}%Clipboard%
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
 clen_InsertUpper()
 {
   local ClipboardOld := ClipboardAll
@@ -48,6 +59,10 @@ clen_InsertLower()
 
 #Insert::
   clen_InsertWithoutFormat()
+  return
+
+#Delete::
+  clen_DirectInsert()
   return
 
 #PgUp::

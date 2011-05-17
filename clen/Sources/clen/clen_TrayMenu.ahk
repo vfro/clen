@@ -304,11 +304,12 @@ clen_ShowHelpOnHotkeys()
   LV_ModifyCol(2, "295")
 
   Gui, Add, Text,, Regular clipboard hotkeys:
-  Gui, Add, ListView, w500 r5 Grid ReadOnly -Hdr,Hotkey|Description
+  Gui, Add, ListView, w500 r6 Grid ReadOnly -Hdr,Hotkey|Description
 
   LV_Add("", "Ctrl + Numpad Sub", "Previous value in a history")
   LV_Add("", "Ctrl + Numpad Add", "Next value in a history")
   LV_Add("", "Win Key + Insert", "Paste without format")
+  LV_Add("", "Win Key + Delete", "Paste when Shift + Insert isn't working (in cmd.exe)")
   LV_Add("", "Win Key + Page Up", "Paste in uppercase")
   LV_Add("", "Win Key + Page Down", "Paste in lowercase")
 
