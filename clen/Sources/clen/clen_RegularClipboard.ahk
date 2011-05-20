@@ -27,6 +27,11 @@ clen_RegularClipboardChaged()
     return
   }
 
+  if (A_EventInfo == 1 and clen_SuppressFormating)
+  {
+    Clipboard := Clipboard
+  }
+
   clen_RegularIndex := clen_RegularMaxRedo
   clen_RegularClip%clen_RegularIndex% := ClipboardAll
   clen_RegularClipInfo%clen_RegularIndex% := A_EventInfo

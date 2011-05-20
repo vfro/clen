@@ -70,6 +70,11 @@ clen_DynamicPaste(ReverseMode)
      clen_DynamicIndexEnd--
   }
 
+  if (clen_SuppressFormating)
+  {
+    clen_ChangeClipboard(Clipboard)
+  }
+
   clen_Paste()
 
   if(!clen_ModeDuplicateToRegular)

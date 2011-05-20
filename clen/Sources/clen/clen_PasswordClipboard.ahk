@@ -31,7 +31,14 @@ clen_PasswordClipboardWaitedCopy()
   local ClipboardSize := StrLen(Clipboard)
   local OldClipboard := ""
 
-  clen_ClipboardPassword := ClipboardAll
+  if (clen_SuppressFormating)
+  {
+    clen_ClipboardPassword := Clipboard
+  }
+  else
+  {
+    clen_ClipboardPassword := ClipboardAll
+  }
 
   if (Index >= 0)
   {
@@ -53,7 +60,14 @@ clen_PasswordClipboardCopy()
   clen_Copy()
   ClipboardSize := StrLen(Clipboard)
 
-  clen_ClipboardPassword := ClipboardAll
+  if (clen_SuppressFormating)
+  {
+    clen_ClipboardPassword := Clipboard
+  }
+  else
+  {
+    clen_ClipboardPassword := ClipboardAll
+  }
 
   clen_ChangeClipboard(OldClipboard)
   clen_WaitForPassword := false

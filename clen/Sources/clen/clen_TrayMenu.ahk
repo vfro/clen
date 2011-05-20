@@ -19,6 +19,7 @@ clen_InitializeTrayMenu()
   clen_MenuOptionDuplicateToRegular(false)
   clen_MenuOptionShowContent(false)
   clen_MenuOptionCopyPaste(false)
+  clen_MenuOptionSuppressFormating(false)
 
   Menu, tray, add, Options, :Options
   clen_AutorunMenuOption(false)
@@ -89,6 +90,7 @@ clen_CheckForFirstRun()
     RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular, 0
     RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, AutoShowContent, 1
     RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, CopyPasteInsert, 1
+    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, SuppressFormating, 0
 
     if (A_IsCompiled)
     {
@@ -267,6 +269,25 @@ clen_MenuOptionCopyPaste(Change)
   return
 }
 
+clen_MenuOptionSuppressFormating(Change)
+{
+  local Fake
+
+  clen_MenuOption(clen_SuppressFormating, "Options", "Suppress formating for regular clipboard", "SuppressFormating", Change)
+  if (Change)
+  {
+     if (clen_SuppressFormating)
+     {
+       TrayTip, clen : Static & Dynamic, Suppress formating for regular clipboard is turned on, 10, 1, 16
+     }
+     else
+     {
+       TrayTip, clen : Static & Dynamic, Suppress formating for regular clipboard is turned off, 10, 1, 16
+     }
+  }
+  return
+}
+
 clen_ShowHelpOnHotkeys()
 {
   Gui, Destroy
@@ -351,6 +372,10 @@ AutoShowContent:
 
 CopyPasteInsert:
   clen_MenuOptionCopyPaste(true)
+  return
+
+SuppressFormating:
+  clen_MenuOptionSuppressFormating(true)
   return
 
 StaticContent:

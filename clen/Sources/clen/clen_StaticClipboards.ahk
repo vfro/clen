@@ -29,6 +29,11 @@ clen_StaticPaste(ClipboardNumber)
 
   clen_ChangeClipboard(clen_ClipBoard%ClipboardNumber%)
 
+  if (clen_SuppressFormating)
+  {
+    clen_ChangeClipboard(Clipboard)
+  }
+
   clen_Paste()
 
   if (!clen_ModeDuplicateToRegular)
