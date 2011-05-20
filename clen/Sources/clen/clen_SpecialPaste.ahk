@@ -57,11 +57,11 @@ clen_InsertLower()
   return
 }
 
-#Insert::
+#Delete::
   clen_InsertWithoutFormat()
   return
 
-#Delete::
+#Insert::
   clen_DirectInsert()
   return
 
