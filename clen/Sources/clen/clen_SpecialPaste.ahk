@@ -57,12 +57,46 @@ clen_InsertLower()
   return
 }
 
+clen_InsertSortedAsc()
+{
+  local ClipboardOld := ClipboardAll
+  local SortedClipboard := Clipboard
+  Sort, SortedClipboard
+
+  clen_ChangeClipboard(SortedClipboard)
+  clen_Paste()
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
+clen_InsertSortedDesc()
+{
+  local ClipboardOld := ClipboardAll
+  local SortedClipboard := Clipboard
+  Sort, SortedClipboard, R
+
+  clen_ChangeClipboard(SortedClipboard)
+  clen_Paste()
+  clen_ChangeClipboard(ClipboardOld)
+
+  return
+}
+
 #Delete::
   clen_InsertWithoutFormat()
   return
 
 #Insert::
   clen_DirectInsert()
+  return
+
+#Home::
+  clen_InsertSortedAsc()
+  return
+
+#End::
+  clen_InsertSortedDesc()
   return
 
 #PgUp::
