@@ -24,5 +24,5 @@ type clen\clen_SpecialPaste.ahk >> clen-all.ahk
 type clen\clen_SaveLoad.ahk >> clen-all.ahk
 type clen\clen_TrayMenu.ahk >> clen-all.ahk
 
-Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1.exe /NoDecompile
+Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1.exe
 start clipboard_enhanced-v2.1.exe
