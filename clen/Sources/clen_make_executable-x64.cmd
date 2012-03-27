@@ -11,7 +11,7 @@ rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 rem See the License for the specific language governing permissions and
 rem limitations under the License.
 
-taskkill /IM clipboard_enhanced-v2.0-x64.exe > nul 2>&1
+taskkill /IM clipboard_enhanced-v2.1-x64.exe > nul 2>&1
 
 type clen\clen_Initialize.ahk > clen-all.ahk
 type clen\clen_Numpad.ahk >> clen-all.ahk
