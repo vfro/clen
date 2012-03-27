@@ -1,6 +1,6 @@
 @echo off
 
-rem Copyright 2008-2010 Volodymyr Frolov
+rem Copyright 2008-2012 Volodymyr Frolov
 rem Licensed under the Apache License, Version 2.0 (the "License");
 rem you may not use this file except in compliance with the License.
 rem You may obtain a copy of the License at
