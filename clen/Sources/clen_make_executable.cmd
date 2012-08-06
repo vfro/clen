@@ -11,8 +11,13 @@ rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 rem See the License for the specific language governing permissions and
 rem limitations under the License.
 
-taskkill /IM clipboard_enhanced-v2.1.exe > nul 2>&1
+echo Clean Up ...
+taskkill /IM clipboard_enhanced-v2.1-x32.exe > nul 2>&1
+del clipboard_enhanced-v2.1-x32.exe > nul 2>&1
+taskkill /IM clipboard_enhanced-v2.1-x64.exe > nul 2>&1
+del clipboard_enhanced-v2.1-x64.exe > nul 2>&1
 
+echo Merge Sources ...
 type clen\clen_Initialize.ahk > clen-all.ahk
 type clen\clen_Numpad.ahk >> clen-all.ahk
 type clen\clen_CopyPaste.ahk >> clen-all.ahk
@@ -24,5 +29,11 @@ type clen\clen_SpecialPaste.ahk >> clen-all.ahk
 type clen\clen_SaveLoad.ahk >> clen-all.ahk
 type clen\clen_TrayMenu.ahk >> clen-all.ahk
 
-Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1.exe
-start clipboard_enhanced-v2.1.exe
+echo Compile clen x32 ...
+%AHK_HOME%\Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1-x32.exe /bin "%AHK_HOME%\Unicode 32-bit.bin"
+
+echo Compile clen x64 ...
+%AHK_HOME%\Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1-x64.exe /bin "%AHK_HOME%\Unicode 64-bit.bin"
+
+echo Start clen x64 ...
+start clipboard_enhanced-v2.1-x64.exe

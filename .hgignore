@@ -1,4 +1,4 @@
 syntax: glob
 
 clen-all.ahk
-clipboard_enhanced-v*.exe
+clipboard_enhanced-*.exe
