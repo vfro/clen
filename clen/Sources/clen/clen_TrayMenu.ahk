@@ -11,7 +11,7 @@
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v2.1`n Â© 2008-2012 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v2.1`n© 2008-2012 Volodymyr Frolov
 
   Menu, tray, NoStandard
 

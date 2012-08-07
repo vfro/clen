@@ -103,7 +103,7 @@ clen_DynamicPrintAll()
 
      PrintableValue := clen_GetPrintableValue(clen_DynamicClip%Index%)
 
-     Content .= "‚óè "
+     Content .= "ï "
      Content .= PrintableValue
      Content .= "`n"
   }
