@@ -25,7 +25,7 @@ clen_DirectInsert()
   local ClipboardOld := ClipboardAll
 
   clen_ChangeClipboard(Clipboard)
-  SendInput {Raw}%Clipboard%
+  SendRaw %Clipboard%
   clen_ChangeClipboard(ClipboardOld)
 
   return
@@ -87,7 +87,7 @@ clen_InsertSortedDesc()
   clen_InsertWithoutFormat()
   return
 
-#Insert::
+#Insert UP::
   clen_DirectInsert()
   return
 
