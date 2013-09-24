@@ -84,25 +84,30 @@ clen_InsertSortedDesc()
 }
 
 #Delete::
+AppsKey & Delete::
   clen_InsertWithoutFormat()
   return
 
-#Insert UP::
+AppsKey & Insert::
   clen_DirectInsert()
   return
 
 #Home::
+AppsKey & Home::
   clen_InsertSortedAsc()
   return
 
 #End::
+AppsKey & End::
   clen_InsertSortedDesc()
   return
 
 #PgUp::
+AppsKey & PgUp::
   clen_InsertUpper()
   return
 
 #PgDn::
+AppsKey & PgDn::
   clen_InsertLower()
   return
