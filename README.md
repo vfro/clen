@@ -1,4 +1,4 @@
-# Clipboard Enhanced
+# ![clen_ico](https://raw.githubusercontent.com/vfro/clen/master/clen/Resources/clen_ProjectImage.png) Clipboard Enhanced
 
 Clipboard Enhanced (clen) is a free clipboard manager for programmers. It provides tracking history of the regular Windows clipboard as well as several additional clipboard types for exchanging values in different ways.
 
