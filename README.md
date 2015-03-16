@@ -6,11 +6,11 @@ Clipboard Enhanced (clen) is a free clipboard manager for programmers. It provid
 
 ## Introduction
 
-Clipboard Enhanced (clen) is a free clipboard manager which is designed for programmers. In addition to tracking history of a regular Windows clipboard it provides several additional clipboard types for exchanging values in different ways.
+Clipboard Enhanced (clen) is a free clipboard manager which is designed for programmers. In addition to tracking history of the regular Windows clipboard it provides several additional clipboard types for exchanging values in different ways.
 
 ### Regular Clipboard
 
-Clen tracks history for a regular Windows clipboard. You may browse it by pressing *Ctrl+Numpad Sub* / *Ctrl+ Numpad Add* hotkeys or selecting "Regular Clipboard\Previous Value" or "Regular Clipboard\Next Value" from tray menu.
+Clen tracks history for the regular Windows clipboard. You may browse it by pressing *Ctrl+Numpad Sub* / *Ctrl+ Numpad Add* hotkeys or selecting "Regular Clipboard\Previous Value" or "Regular Clipboard\Next Value" from tray menu.
 
 ### Static Clipboards
 
