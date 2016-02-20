@@ -1,4 +1,4 @@
-; Copyright 2008-2012 Volodymyr Frolov
+; Copyright 2008-2016 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -65,11 +65,11 @@ clen_RegularClipboardChaged()
     if (A_EventInfo == 1)
     {
       PrintableClipboard := clen_GetPrintableClipboardValue()
-      TrayTip, clen : Regular,%PrintableClipboard%, 10, 1, 16
+      clen_TrayTip("Regular", PrintableClipboard)
     }
     else
     {
-      TrayTip, clen : Regular,<binary data>, 10, 1, 16
+      clen_TrayTip("Regular", "<binary data>")
     }
   }
 
@@ -118,22 +118,22 @@ clen_RegularUndo()
         if (clen_RegularClipInfo%Index% == 1)
         {
           PrintableClipboard := clen_GetPrintableClipboardValue()
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1, 16
+          clen_TrayTip("Regular value " . clen_RegularIndex . " out of " . clen_RegularMaxRedo, PrintableClipboard)
         }
         else
         {
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1, 16
+          clen_TrayTip("Regular value " . clen_RegularIndex . " out of " . clen_RegularMaxRedo, "<binary data>")
         }
       }
     }
     else
     {
-      TrayTip,
+      clen_HideTrayTip()
     }
   }
   else
   {
-    TrayTip,
+    clen_HideTrayTip()
   }
 
   clen_ControlMenu()
@@ -155,18 +155,18 @@ clen_RegularRedo()
         if (clen_RegularClipInfo%Index% == 1)
         {
           PrintableClipboard := clen_GetPrintableClipboardValue()
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,%PrintableClipboard%, 10, 1, 16
+          clen_TrayTip("Regular value " . clen_RegularIndex . " out of " . clen_RegularMaxRedo, PrintableClipboard)
         }
         else
         {
-          TrayTip, clen : Regular Value %clen_RegularIndex% from %clen_RegularMaxRedo%,<binary data>, 10, 1, 16
+          clen_TrayTip("Regular Value " . clen_RegularIndex . " out of " . clen_RegularMaxRedo, "<binary data>")
         }
     }
 
   }
   else
   {
-    TrayTip,
+    clen_HideTrayTip()
   }
 
   clen_ControlMenu()

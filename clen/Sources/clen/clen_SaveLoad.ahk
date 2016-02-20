@@ -1,4 +1,4 @@
-; Copyright 2008-2012 Volodymyr Frolov
+; Copyright 2008-2016 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -45,7 +45,7 @@ clen_LoadSettings()
   }
   clen_DynamicIndexEnd += 1
 
-  TrayTip, clen : Static & Dynamic, Dynamic and static clipboards were loaded, 10, 1, 16
+  clen_TrayTip("Static & Dynamic", "Dynamic and static clipboards were loaded")
   return
 }
 
@@ -78,7 +78,7 @@ clen_SaveSettings()
 
   clen_ChangeClipboard(ClipboardOld)
 
-  TrayTip, clen : Static & Dynamic, Dynamic and static clipboards were saved, 10, 1, 16
+  clen_TrayTip("Static & Dynamic", "Dynamic and static clipboards were saved")
   return
 }
 

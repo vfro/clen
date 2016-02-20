@@ -1,4 +1,4 @@
-; Copyright 2008-2012 Volodymyr Frolov
+; Copyright 2008-2016 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -66,7 +66,8 @@ clen_PrintStaticContent()
      clipAll .= clen_GetClipPrintableData(A_Index)
   }
   clipAll .= clen_GetClipPrintableData(0)
-  TrayTip, clen : Static, %clipAll%, 10, 1, 16
+
+  clen_TrayTip("Static", clipAll)
   return
 }
 

@@ -1,6 +1,6 @@
 @echo off
 
-rem Copyright 2008-2012 Volodymyr Frolov
+rem Copyright 2008-2016 Volodymyr Frolov
 rem Licensed under the Apache License, Version 2.0 (the "License");
 rem you may not use this file except in compliance with the License.
 rem You may obtain a copy of the License at
@@ -12,10 +12,10 @@ rem See the License for the specific language governing permissions and
 rem limitations under the License.
 
 echo Clean Up ...
-taskkill /IM clipboard_enhanced-v2.1-x32.exe > nul 2>&1
-del clipboard_enhanced-v2.1-x32.exe > nul 2>&1
-taskkill /IM clipboard_enhanced-v2.1-x64.exe > nul 2>&1
-del clipboard_enhanced-v2.1-x64.exe > nul 2>&1
+taskkill /IM clipboard_enhanced-v2.2-x32.exe > nul 2>&1
+del clipboard_enhanced-v2.2-x32.exe > nul 2>&1
+taskkill /IM clipboard_enhanced-v2.2-x64.exe > nul 2>&1
+del clipboard_enhanced-v2.2-x64.exe > nul 2>&1
 
 echo Merge Sources ...
 type clen\clen_Initialize.ahk > clen-all.ahk
@@ -30,10 +30,10 @@ type clen\clen_SaveLoad.ahk >> clen-all.ahk
 type clen\clen_TrayMenu.ahk >> clen-all.ahk
 
 echo Compile clen x32 ...
-%AHK_HOME%\Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1-x32.exe /bin "%AHK_HOME%\Unicode 32-bit.bin"
+%AHK_HOME%\Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.2-x32.exe /bin "%AHK_HOME%\Unicode 32-bit.bin"
 
 echo Compile clen x64 ...
-%AHK_HOME%\Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.1-x64.exe /bin "%AHK_HOME%\Unicode 64-bit.bin"
+%AHK_HOME%\Ahk2Exe.exe /in clen-all.ahk /icon ../Resources/clen.ico /out clipboard_enhanced-v2.2-x64.exe /bin "%AHK_HOME%\Unicode 64-bit.bin"
 
 echo Start clen x64 ...
-start clipboard_enhanced-v2.1-x64.exe
+start clipboard_enhanced-v2.2-x64.exe

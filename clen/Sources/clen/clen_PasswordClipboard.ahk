@@ -1,4 +1,4 @@
-; Copyright 2008-2012 Volodymyr Frolov
+; Copyright 2008-2016 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -20,7 +20,7 @@ clen_PasswordClipboardShow(Size)
       ClipboardShow .= "*"
     }
 
-    TrayTip, clen : Password,Password: %ClipboardShow%, 30, 1, 16
+    clen_TrayTip("Password", "Password: " . ClipboardShow)
   }
   return
 }
@@ -93,14 +93,13 @@ clen_PasswordClipboardPaste()
 
       clen_ChangeClipboard(ClipboardOld)
 
-      TrayTip,
-      return
+      clen_HideTrayTip()
     }
   }
 
   if (clen_Print)
   {
-    TrayTip, clen : Password,Password Clipboard is empty, 10, 1, 16
+    clen_TrayTip("Password", "Password Clipboard is empty")
   }
   return
 }
@@ -114,7 +113,7 @@ clen_PasswordClipboardWaitForCopy()
 
   if (clen_Print)
   {
-    TrayTip, clen : Password,Waiting for password, 10, 1, 16
+    clen_TrayTip("Password", "Waiting for password")
   }
   return
 }

@@ -1,4 +1,4 @@
-; Copyright 2008-2012 Volodymyr Frolov
+; Copyright 2008-2016 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -9,9 +9,22 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
+clen_TrayTip(Caption, Content)
+{
+  clen_HideTrayTip()
+  TrayTip, clen : %Caption%, %Content%, 10, 1, 16
+}
+
+clen_HideTrayTip()
+{
+  TrayTip
+  Menu Tray, NoIcon
+  Menu Tray, Icon
+}
+
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v2.1`n© 2008-2012 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v2.2`n© 2008-2012 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
@@ -78,23 +91,23 @@ clen_CheckForFirstRun()
 {
   local RunStatus := false
 
-  RegRead, RunStatus, REG_SZ, HKEY_CURRENT_USER, Software\clen
+  RegRead, RunStatus, HKEY_CURRENT_USER\Software\clen
 
   if (ErrorLevel || !RunStatus)
   {
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen,,1
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen,,1
 
     ; Fill default values for all options
 
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DynamicIsStack, 0
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, DuplicateToRegular, 0
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, AutoShowContent, 1
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, CopyPasteInsert, 1
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, SuppressFormating, 0
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen\options, DynamicIsStack, 0
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen\options, DuplicateToRegular, 0
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen\options, AutoShowContent, 1
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen\options, CopyPasteInsert, 1
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen\options, SuppressFormating, 0
 
     if (A_IsCompiled)
     {
-      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
     }
   }
   return
@@ -111,7 +124,7 @@ clen_AutorunMenuOption(Change)
     return
   }
 
-  RegRead, OptionString, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen
+  RegRead, OptionString, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen
 
   if (ErrorLevel || StrLen(OptionString) == 0)
   {
@@ -122,7 +135,7 @@ clen_AutorunMenuOption(Change)
     OptionValue := true
     if OptionString <> %A_ScriptFullPath%
     {
-      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
     }
   }
 
@@ -131,12 +144,12 @@ clen_AutorunMenuOption(Change)
     if (OptionValue)
     {
       OptionValue := false
-      RegDelete, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen
+      RegDelete, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen
     }
     else
     {
       OptionValue := true
-      RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
     }
   }
   else
@@ -160,7 +173,7 @@ clen_MenuOption(ByRef OptionId, Menu, Submenu, Label, Change)
 {
   local OptionValue
 
-  RegRead, OptionId, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, %Label%
+  RegRead, OptionId, HKEY_CURRENT_USER\Software\clen\options, %Label%
   OptionValue := OptionId
 
   if (Change)
@@ -175,7 +188,7 @@ clen_MenuOption(ByRef OptionId, Menu, Submenu, Label, Change)
     }
     OptionValue := OptionId
 
-    RegWrite, REG_SZ, HKEY_CURRENT_USER, Software\clen\options, %Label%, %OptionId%
+    RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\clen\options, %Label%, %OptionId%
   }
   else
   {
@@ -202,11 +215,11 @@ clen_MenuOptionStack(Change)
   {
      if (clen_DynamicIsStack)
      {
-        TrayTip, clen : Dynamic, Dynamic clipboard model is switched to STACK, 10, 1, 16
+        clen_TrayTip("Dynamic", "Dynamic clipboard model is switched to STACK")
      }
      else
      {
-        TrayTip, clen : Dynamic, Dynamic clipboard model is switched to QUEUE, 10, 1, 16
+        clen_TrayTip("Dynamic", "Dynamic clipboard model is switched to QUEUE")
      }
   }
   return
@@ -221,11 +234,11 @@ clen_MenuOptionDuplicateToRegular(Change)
   {
      if (clen_ModeDuplicateToRegular)
      {
-        TrayTip, clen : Static & Dynamic, Duplicate to regular clipboard is turned ON, 10, 1, 16
+        clen_TrayTip("Static & Dynamic", "Duplicate to regular clipboard is turned ON")
      }
      else
      {
-        TrayTip, clen : Static & Dynamic, Duplicate to regular clipboard is turned OFF, 10, 1, 16
+        clen_TrayTip("Static & Dynamic", "Duplicate to regular clipboard is turned OFF")
      }
   }
   return
@@ -240,11 +253,11 @@ clen_MenuOptionShowContent(Change)
   {
      if (clen_Print)
      {
-        TrayTip, clen : Static & Dynamic, Show keyboard content is turned ON, 10, 1, 16
+        clen_TrayTip("Static & Dynamic", "Show keyboard content is turned ON")
      }
      else
      {
-        TrayTip, clen : Static & Dynamic, Show keyboard content is turned OFF, 10, 1, 16
+        clen_TrayTip("Static & Dynamic", "Show keyboard content is turned OFF")
      }
   }
   return
@@ -259,11 +272,11 @@ clen_MenuOptionCopyPaste(Change)
   {
      if (clen_CopyPasteInsert)
      {
-       TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+Insert\Shift+Insert, 10, 1, 16
+       clen_TrayTip("Static & Dynamic", "Copy\Paste mode is Ctrl+Insert\Shift+Insert")
      }
      else
      {
-       TrayTip, clen : Static & Dynamic, Copy\Paste mode is Ctrl+C\Ctrl+V, 10, 1, 16
+       clen_TrayTip("Static & Dynamic", "Copy\Paste mode is Ctrl+C\Ctrl+V")
      }
   }
   return
@@ -278,11 +291,11 @@ clen_MenuOptionSuppressFormating(Change)
   {
      if (clen_SuppressFormating)
      {
-       TrayTip, clen : Static & Dynamic, Suppress formating for regular clipboard is turned on, 10, 1, 16
+       clen_TrayTip("Static & Dynamic", "Suppress formating for regular clipboard is turned ON")
      }
      else
      {
-       TrayTip, clen : Static & Dynamic, Suppress formating for regular clipboard is turned off, 10, 1, 16
+       clen_TrayTip("Static & Dynamic", "Suppress formating for regular clipboard is turned OFF")
      }
   }
   return
@@ -409,7 +422,7 @@ RestoreOptions:
   return
 
 AboutMenuItem:
-  Run, http://code.google.com/p/clen/wiki/About
+  Run, https://github.com/vfro/clen
   return
 
 HelpOnHotkeys:

@@ -1,4 +1,4 @@
-; Copyright 2008-2012 Volodymyr Frolov
+; Copyright 2008-2016 Volodymyr Frolov
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
@@ -117,7 +117,7 @@ clen_DynamicPrintAll()
      Type := "STACK"
   }
 
-  TrayTip, clen : Dynamic %Type%, %Content%, 10, 1, 16
+  clen_TrayTip("Dynamic " . Type, Content)
   return
 }
 
@@ -140,7 +140,7 @@ clen_PasteList(ReverseMode)
 
   if(clen_Print)
   {
-     TrayTip, , , 10, 1, 16
+     clen_HideTrayTip()
   }
   return
 }
