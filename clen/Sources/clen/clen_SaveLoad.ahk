@@ -33,15 +33,15 @@ clen_LoadSettings()
 
   Loop 9
   {
-     RegRead, clen_ClipBoard%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, %A_Index%
+     RegRead, clen_ClipBoard%A_Index%, HKEY_CURRENT_USER\Software\clen\static, %A_Index%
   }
-  RegRead, clen_ClipBoard0, REG_SZ, HKEY_CURRENT_USER, Software\clen\static, 0
+  RegRead, clen_ClipBoard0, HKEY_CURRENT_USER\Software\clen\static, 0
 
   clen_DynamicIndexBegin = 1
-  RegRead, clen_DynamicIndexEnd, REG_DWORD, HKEY_CURRENT_USER, Software\clen\dynamic, count
+  RegRead, clen_DynamicIndexEnd, HKEY_CURRENT_USER\Software\clen\dynamic, count
   Loop %clen_DynamicIndexEnd%
   {
-     RegRead, clen_DynamicClip%A_Index%, REG_SZ, HKEY_CURRENT_USER, Software\clen\dynamic, %A_Index%
+     RegRead, clen_DynamicClip%A_Index%, HKEY_CURRENT_USER\Software\clen\dynamic, %A_Index%
   }
   clen_DynamicIndexEnd += 1
 

@@ -24,7 +24,7 @@ clen_HideTrayTip()
 
 clen_InitializeTrayMenu()
 {
-  Menu, Tray, Tip, Clipboard Enhanced v2.2`n© 2008-2012 Volodymyr Frolov
+  Menu, Tray, Tip, Clipboard Enhanced v2.3`n© 2008-2012 Volodymyr Frolov
 
   Menu, tray, NoStandard
 
@@ -107,7 +107,7 @@ clen_CheckForFirstRun()
 
     if (A_IsCompiled)
     {
-      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, "%A_ScriptFullPath%"
     }
   }
   return
@@ -133,9 +133,9 @@ clen_AutorunMenuOption(Change)
   else
   {
     OptionValue := true
-    if OptionString <> %A_ScriptFullPath%
+    if OptionString <> "%A_ScriptFullPath%"
     {
-      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, "%A_ScriptFullPath%"
     }
   }
 
@@ -149,7 +149,7 @@ clen_AutorunMenuOption(Change)
     else
     {
       OptionValue := true
-      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, %A_ScriptFullPath%
+      RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, clen, "%A_ScriptFullPath%"
     }
   }
   else
