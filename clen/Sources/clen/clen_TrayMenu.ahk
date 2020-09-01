@@ -12,7 +12,7 @@
 clen_TrayTip(Caption, Content)
 {
   clen_HideTrayTip()
-  TrayTip, clen : %Caption%, %Content%, 10, 1, 16
+  TrayTip, clen : %Caption%, %Content%, 10, 17
 }
 
 clen_HideTrayTip()
